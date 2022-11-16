@@ -1,4 +1,4 @@
-package cakeShop;
+package CakeShop;
 
 public class Cakes {
 	private String cakeType;
