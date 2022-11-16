@@ -1,4 +1,4 @@
-package cakeShop;
+package CakeShop;
 
 import java.util.Scanner;
 
@@ -10,7 +10,7 @@ public class Main {
         Login password = new Login();
         Scanner scanner = new Scanner(System.in);
         String userName = "Izaiah";
-        String password = "1234";
+//        String password = "1234";
         
         System.out.print("Enter User Name: ");
         String name=scanner.next();

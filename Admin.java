@@ -1,4 +1,4 @@
-package cakeShop;
+package CakeShop;
 
 public class Admin {
 	private String name;

@@ -1,4 +1,4 @@
-package cakeShop;
+package CakeShop;
 
 import java.util.HashMap;
 
