@@ -22,8 +22,6 @@ public class Main {
         }else {
         	System.exit(0);
         }
-        
-        
     }
 	
 	public static void AddCustomerInfo() throws SQLException {
@@ -49,7 +47,7 @@ public class Main {
 		scanner.close();
 		
 	}
-
+ 
 
 	
 	
