@@ -5,13 +5,16 @@ import java.util.*;
 
 public class Main {
 	static final Scanner scanner = new Scanner(System.in);
+	//create one single static scanner object to be used throughout the whole program
+	//this is done to prevent the input streams from closing and bringing errors.
+	//the scanner object is then passed as an argument to the method calls where it is going to be used
 
-	
 	public static void main(String[] args) throws SQLException {
         System.out.println("I know you love cakes");
         System.out.println("Admin login");
         
-        //this is the method used to log admins into the system by validating the username and password input 
+        //this is the method used to log admins into the system by validating the user name and password input 
+        //it also takes in a scanner object as a parameter so that we can read input from the user in the console
         boolean loginValid = DatabaseConnect.LoginAdmin(scanner);
         
         if(loginValid == true) {
