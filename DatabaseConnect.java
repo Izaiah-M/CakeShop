@@ -57,31 +57,17 @@ public static Connection conn;
         
         //this block of if statements carries out validation on the values of name and pass that the user inputs
         //and it compares them with the values in the admin object and if they match, logs the user in
-        if(name.equals(admin.getUsername())) {
-        	if(pass.equals(admin.getPassword())) {
+        if(name.equals(admin.getUsername()) && pass.equals(admin.getPassword())) {
         		System.out.println("Welcome!!");
+        		scanner.close();
+        		return true;
         	}else {
-        		System.out.println("Please Check Password");
+        		System.out.println("Please Enter the correct username and password");
+                scanner.close();
+        		return false;
         	}
-        }else {
-        	System.out.println("Please Check user Name");
-        }
-        scanner.close();
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		return false;
+
+
 		
 	}
 	

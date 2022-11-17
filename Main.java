@@ -7,11 +7,18 @@ public class Main {
 	
 	public static void main(String[] args) throws SQLException {
         System.out.println("I know you love cakes");
+        System.out.println("Admin login");
+        
+        //this is the method used to log admins into the system by validating the username and password input 
+        boolean loginValid = DatabaseConnect.LoginAdmin();
+        
+        if(loginValid == true) {
+            AddCustomerInfo();
+        }else {
+        	System.exit(0);
+        }
         
         
-        
-        DatabaseConnect.LoginAdmin();
-        AddCustomerInfo();
     }
 	
 	public static void AddCustomerInfo() throws SQLException {
