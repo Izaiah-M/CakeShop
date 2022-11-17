@@ -5,14 +5,7 @@ public class Customer {
 	private String email;
 	private int contact;
 	private String address;
-<<<<<<< HEAD
 
-	public Customer() {
-
-	}
-
-=======
-	
 	public Customer(String name, String email, int contact, String address) {
 		this.setName(name);
 		this.setEmail(email);
@@ -36,7 +29,6 @@ public class Customer {
 		this.address = address;
 	}
 
->>>>>>> 191405e13453e7a86bfd4b264c3c0ed4022eaf76
 	public String getName() {
 		return name;
 	}
@@ -44,13 +36,8 @@ public class Customer {
 	public String getEmail() {
 		return email;
 	}
-<<<<<<< HEAD
 
-	public String getContact() {
-=======
-	
 	public int getContact() {
->>>>>>> 191405e13453e7a86bfd4b264c3c0ed4022eaf76
 		return contact;
 	}
 
