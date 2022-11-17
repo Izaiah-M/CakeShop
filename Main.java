@@ -1,65 +1,16 @@
 package CakeShop;
 
 import java.sql.SQLException;
-import java.util.Scanner;
+import java.util.*;
 
 public class Main {
+	static final Scanner scanner = new Scanner(System.in);
+	//create one single static scanner object to be used throughout the whole program
+	//this is done to prevent the input streams from closing and bringing errors.
+	//the scanner object is then passed as an argument to the method calls where it is going to be used
 
-    public static void main(String[] args) throws SQLException {
+	public static void main(String[] args) throws SQLException {
         System.out.println("I know you love cakes");
-<<<<<<< HEAD
-
-        // Login password = new Login();
-        // Scanner scanner = new Scanner(System.in);
-        // String userName = "Izaiah";
-        //// String password = "1234";
-        //
-        // System.out.print("Enter User Name: ");
-        // String name=scanner.next();
-        //
-        // System.out.print("Enter Password: ");
-        // String pass = scanner.next();
-        //
-        // if(userName.equals(name)) {
-        // if(password.equals(pass)) {
-        // System.out.println("Welcome!!");
-        // }else {
-        // System.out.println("Please Check Password");
-        // }
-        // }else {
-        // System.out.println("Please Check user Name");
-        // }
-        // scanner.close();
-
-        DatabaseConnect.LoginAdmin();
-        AddCustomerInfo();
-    }
-
-    public static void AddCustomerInfo() throws SQLException {
-        Scanner input = new Scanner(System.in);
-
-        System.out.println("Welcome to our Cake Shop");
-
-        System.out.println("Enter your name:");
-        String name = input.nextLine();
-
-        System.out.println("Enter your email:");
-        String email = input.nextLine();
-
-        System.out.println("Enter your contact:");
-        int contact = input.nextInt();
-        input.nextLine();
-
-        System.out.println("Enter your address:");
-        String address = input.nextLine();
-
-        Customer cs = new Customer(name, email, contact, address);
-        DatabaseConnect.AddCustomer(cs);
-
-        input.close();
-
-    }
-=======
         System.out.println("Admin login");
         
         //this is the method used to log admins into the system by validating the user name and password input 
@@ -96,7 +47,6 @@ public class Main {
 		scanner.close();
 		
 	}
- 
->>>>>>> 1b3861681cf287565523b296d3bdf3427d44341e
-
 }
+
+
