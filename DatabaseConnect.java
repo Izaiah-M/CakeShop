@@ -33,8 +33,6 @@ public static Connection conn;
 		ResultSet rs = stmt.executeQuery(query);
 		
 		while (rs.next()) {
-			System.out.println("Username: " + rs.getString("Username"));
-			System.out.println("Password: " + rs.getString("Password"));
 			
 			admin.setUsername(rs.getString("Username"));
 			admin.setPassword(rs.getString("Password"));
