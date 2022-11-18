@@ -7,6 +7,11 @@ public class Cakes {
 	private String dateMade;
 	private String icing;
 	private int cost;
+	private int id;
+
+	public Cakes() {
+
+	}
 
 	public Cakes(String cakeType, String flavour, String message, String dateMade, String icing, int cost) {
 		this.cakeType = cakeType;
@@ -15,6 +20,21 @@ public class Cakes {
 		this.dateMade = dateMade;
 		this.icing = icing;
 		this.cost = cost;
+	}
+
+	// Added an Id to the cake for Identification
+	public Cakes(int id, String cakeType, String flavour, String message, String dateMade, String icing, int cost) {
+		this.cakeType = cakeType;
+		this.flavour = flavour;
+		this.message = message;
+		this.dateMade = dateMade;
+		this.icing = icing;
+		this.cost = cost;
+		this.id = id;
+	}
+
+	public int getId() {
+		return id;
 	}
 
 	public String getCakeType() {
