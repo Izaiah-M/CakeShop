@@ -11,17 +11,7 @@ public class Main {
 
 	public static void main(String[] args) throws SQLException {
         System.out.println("I know you love cakes");
-        System.out.println("Admin login");
-        
-        //this is the method used to log admins into the system by validating the user name and password input 
-        //it also takes in a scanner object as a parameter so that we can read input from the user in the console
-        boolean loginValid = DatabaseConnect.LoginAdmin(scanner);
-        
-        if(loginValid == true) {
-            AddCustomerInfo();
-        }else {
-        	System.exit(0);
-        }
+ 
     }
 	
 	public static void AddCustomerInfo() throws SQLException {
@@ -46,6 +36,22 @@ public class Main {
 		
 		scanner.close();
 		
+	}
+	
+	public static void AdminDashboard() throws SQLException {
+	       System.out.println("Admin login");
+	        //this is the method used to log admins into the system by validating the user name and password input 
+	        //it also takes in a scanner object as a parameter so that we can read input from the user in the console
+	        boolean loginValid = DatabaseConnect.LoginAdmin(scanner);
+	        
+	        if(loginValid == true) {
+	            AddCustomerInfo();
+	        }else {
+	        	System.exit(0);
+	        }
+	        
+	        DatabaseConnect.AddCake(scanner);
+
 	}
 }
 

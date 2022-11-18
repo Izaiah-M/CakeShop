@@ -10,7 +10,6 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class DatabaseConnect {
-//    static final Scanner scanner = new Scanner(System.in);
     public static Connection conn;
 	
 	public static void AddCustomer(Customer cstm) throws SQLException {
@@ -65,11 +64,36 @@ public class DatabaseConnect {
         	}
 	}
 
-	public static void AddCake() {
-		// TODO Auto-generated method stub
+	//this method is accesible only to the admin and it is used to add cakes to the database
+	public static void AddCake(Scanner scanner) throws SQLException {
+		String Ctype = null,Cflavour = null,Cdate = null,Cicing = null;
+		int Cprice = 0;
 		System.out.println("Enter the type of the cake i.e fruit cake, forest cake, sponge cake, basic vanilla cake");
-		String Ctype = scanner.nextLine();
+		Ctype = scanner.nextLine();
 		
+		System.out.println("Enter the flavour of the cake e.g orange, marble , chocolate ,vanilla");
+		Cflavour = scanner.nextLine();		
+		
+		System.out.println("Enter the date the cake was made.");
+		Cdate = scanner.nextLine();	
+		
+		System.out.println("Enter the icing type of the cake i.e fondant , whipped cream , butter cream");
+		Cicing = scanner.nextLine();
+		
+		System.out.println("Enter the price of the cake ");
+		Cprice = scanner.nextInt();
+		
+		Cakes cake = new Cakes(Ctype,Cflavour,Cdate,Cicing,Cprice);
+		
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Cakes(Type,Flavour,DateMade,Icing,Cost) VALUES(?,?,?,?,?)",Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, cake.getCakeType());
+		stmt.setString(2,cake.getFlavour());
+		stmt.setString(3,cake.getDateMade());
+		stmt.setString(4,cake.getIcing());
+		stmt.setLong(5,cake.getCost());
+		
+		stmt.executeUpdate();
 	}
 	
 }

@@ -24,7 +24,4 @@ public class Admin {
 		this.password = password;
 	}
 
-	public void AddCake() {
-		DatabaseConnect.AddCake();
-	}
 }
