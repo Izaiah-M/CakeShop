@@ -42,7 +42,7 @@ public class ShoppingCart extends Observable {
             event.eventType = ShoppingCartEvent.CHANGED_ITEM;
         }
 
-        total += newItem.itemCost * newItem.quantity;
+        total += newItem.cakeCost * newItem.quantity;
 
         // Tell the observers what just happened
         setChanged();
@@ -73,7 +73,7 @@ public class ShoppingCart extends Observable {
             }
 
             // Adjust the total
-            total -= oldItem.itemCost * oldItem.quantity;
+            total -= oldItem.cakeCost * oldItem.quantity;
 
             currItem.subtract(oldItem);
 

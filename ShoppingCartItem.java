@@ -1,25 +1,22 @@
 package CakeShop;
 
 // This class contains data for an individual item in a
+
 // shopping cart.
 
-import java.net.URL;
-
 public class ShoppingCartItem implements Cloneable {
-	public String itemName;
-	public int itemCost;
+	public String cakeName;
+	public int cakeCost;
 	public int quantity;
-	public URL descriptionURL;
 
 	public ShoppingCartItem() {
 	}
 
-	public ShoppingCartItem(String itemName, int itemCost,
-			int quantity, URL descriptionURL) {
-		this.itemName = itemName;
-		this.itemCost = itemCost;
+	public ShoppingCartItem(String cakeName, int cakeCost,
+			int quantity) {
+		this.cakeName = cakeName;
+		this.cakeCost = cakeCost;
 		this.quantity = quantity;
-		this.descriptionURL = descriptionURL;
 	}
 
 	// The add method is a quick method for combining two similar
@@ -43,7 +40,7 @@ public class ShoppingCartItem implements Cloneable {
 	// always a good idea to do this.
 
 	public int hashCode() {
-		return itemName.hashCode() + itemCost;
+		return cakeName.hashCode() + cakeCost;
 	}
 
 	// The equals method does something a little dirty here, it only
@@ -59,21 +56,19 @@ public class ShoppingCartItem implements Cloneable {
 
 		ShoppingCartItem otherItem = (ShoppingCartItem) other;
 
-		return (itemName.equals(otherItem.itemName)) &&
-				(itemCost == otherItem.itemCost);
+		return (cakeName.equals(otherItem.cakeName)) &&
+				(cakeCost == otherItem.cakeCost);
 	}
 
 	// Create a copy of this object
 
 	public ShoppingCartItem copy() {
-		return new ShoppingCartItem(itemName, itemCost,
-				quantity, descriptionURL);
+		return new ShoppingCartItem(cakeName, cakeCost, quantity);
 	}
 
 	// Create a printable version of this object
 
 	public String toString() {
-		return itemName + " cost: " + itemCost + " qty: " + quantity + " desc: " +
-				descriptionURL;
+		return cakeName + " cost: " + cakeCost + " qty: " + quantity + " desc: ";
 	}
 }
