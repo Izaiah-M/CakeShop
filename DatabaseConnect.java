@@ -58,15 +58,17 @@ public class DatabaseConnect {
         //and it compares them with the values in the admin object and if they match, logs the user in
         if(name.equals(admin.getUsername()) && pass.equals(admin.getPassword())) {
         		System.out.println("Logging in!!");
-//        		scanner.close();
         		return true;
         	}else {
         		System.out.println("Please Enter the correct username and password");
-//                scanner.close();
         		return false;
         	}
+	}
 
-
+	public static void AddCake() {
+		// TODO Auto-generated method stub
+		System.out.println("Enter the type of the cake i.e fruit cake, forest cake, sponge cake, basic vanilla cake");
+		String Ctype = scanner.nextLine();
 		
 	}
 	

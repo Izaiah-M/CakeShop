@@ -16,6 +16,15 @@ public class Cakes {
 		this.icing = icing;
 		this.cost = cost;
 	}
+	
+	//overridden constructor to take in a cake object without a message written on it
+	public Cakes(String cakeType, String flavour, String dateMade, String icing, int cost) {
+		this.cakeType = cakeType;
+		this.flavour = flavour;
+		this.dateMade = dateMade;
+		this.icing = icing;
+		this.cost = cost;
+	}
 
 	public String getCakeType() {
 		return cakeType;
