@@ -9,12 +9,13 @@ import java.util.*;
 // It is observable, which means that it notifies any interested
 // classes whenever it changes.
 
+@SuppressWarnings("deprecation")
 public class ShoppingCart extends Observable {
-    protected Vector items; // the items in the cart
+    protected Vector<ShoppingCartItem> items; // the items in the cart
     protected int total; // the total item cost so far
 
     public ShoppingCart() {
-        items = new Vector();
+        items = new Vector<ShoppingCartItem>();
         total = 0;
     }
 

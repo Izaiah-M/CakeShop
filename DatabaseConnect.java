@@ -64,7 +64,7 @@ public class DatabaseConnect {
         	}
 	}
 
-	//this method is accesible only to the admin and it is used to add cakes to the database
+	//this method is accessible only to the admin and it is used to add cakes to the database
 	public static void AddCake(Scanner scanner) throws SQLException {
 		String Ctype = null,Cflavour = null,Cdate = null,Cicing = null;
 		int Cprice = 0;
@@ -95,5 +95,50 @@ public class DatabaseConnect {
 		
 		stmt.executeUpdate();
 	}
+
+	public static void RemoveCake(Scanner scanner) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	public static void ProductReport() throws SQLException {
+		
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		Statement stmt = conn.createStatement();
+		
+		String query = "SELECT * FROM Cakes;";
+		
+		ResultSet rs = stmt.executeQuery(query);
+		
+		Cakes cake = new Cakes();
+
+		while(rs.next()) {
+			//TODO recreate cake objects with ids to be displayed to the admin
+			cake.setId(rs.getInt("ID"));
+			cake.setCakeType(rs.getString("Type"));
+			cake.setFlavour(rs.getString("Flavour"));
+			cake.setDateMade(rs.getString("DateMade"));
+			cake.setIcing(rs.getString("Icing"));
+			cake.setCost(rs.getInt("Cost"));
+			System.out.println(cake);
+			
+		}
+
+		
+	}
+
+	public static void SalesReport() {
+		// TODO Auto-generated method stub
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	
 }

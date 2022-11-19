@@ -15,13 +15,16 @@ public class Main {
         System.out.println("For customers,enter 2");
         int choice = 0;
         choice = scanner.nextInt();
+        scanner.nextLine();
         
         switch(choice) {
         case 1:
         	AdminDashboard();
+        	break;
         	
         case 2:
         	AddCustomerInfo();
+        	break;
    
         	
         }
@@ -70,19 +73,24 @@ public class Main {
 		        System.out.println("4. Sales report");
 		        System.out.println("5. Logout of database");
 		        int answer = scanner.nextInt();
+		        scanner.nextLine();
 		        
 		        switch (answer) {
 		        	case 1:
 		        		DatabaseConnect.AddCake(scanner);
+		        		break;
 		        	
 		        	case 2:
-//		        		DatabaseConnect.RemoveCake(scanner);
+		        		DatabaseConnect.RemoveCake(scanner);
+		        		break;
 		        		
 		        	case 3:
-//		        		DatabaseConnect.ProductReport();
+		        		DatabaseConnect.ProductReport();
+		        		break;
 		        		
 		        	case 4:
-//		        		DatabaseConnect.SalesReport();
+		        		DatabaseConnect.SalesReport();
+		        		break;
 		        		
 		        	case 5:
 		        		break;
