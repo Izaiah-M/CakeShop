@@ -81,15 +81,15 @@ public class Main {
 					break;
 
 				case 2:
-					// DatabaseConnect.RemoveCake(scanner);
+					DatabaseConnect.RemoveCake(scanner);
 					break;
 
 				case 3:
-					// DatabaseConnect.ProductReport();
+					DatabaseConnect.ProductReport();
 					break;
 
 				case 4:
-					// DatabaseConnect.SalesReport();
+					DatabaseConnect.SalesReport();
 					break;
 
 				case 5:
