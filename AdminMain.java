@@ -15,8 +15,7 @@ public class AdminMain {
 
 	public static void main(String[] args) throws SQLException {
 		System.out.println("Welcome Administrator, Login!!");
-		System.out.println("For admins,enter 1");
-		System.out.println("For customers,enter 2");
+		System.out.println("Press 1 to login");
 		int choice = 0;
 		choice = scanner.nextInt();
 		scanner.nextLine();
@@ -25,35 +24,7 @@ public class AdminMain {
 			case 1:
 				AdminDashboard();
 				break;
-
-			case 2:
-				CustomerDashboard();
-				break;
-
 		}
-
-	}
-
-	public static void AddCustomerInfo() throws SQLException {
-
-		System.out.println("Welcome to our Cake Shop");
-
-		System.out.println("Enter your name:");
-		String customername = scanner.nextLine();
-
-		System.out.println("Enter your email:");
-		String customeremail = scanner.nextLine();
-
-		System.out.println("Enter your contact:");
-		int customercontact = scanner.nextInt();
-		scanner.nextLine();
-
-		System.out.println("Enter your address:");
-		String customeraddress = scanner.nextLine();
-
-		Customer cs = new Customer(customername, customeremail, customercontact, customeraddress);
-		DatabaseConnect.AddCustomer(cs);
-
 	}
 
 	public static void AdminDashboard() throws SQLException {
@@ -105,38 +76,4 @@ public class AdminMain {
 
 	}
 
-	public static void CustomerDashboard() throws SQLException {
-		System.out.println("Welcome to our Cake shop");
-		System.out.println("1.Sign Up");
-		System.out.println("2.Sign In");
-		int choice = scanner.nextInt();
-		scanner.nextLine();
-
-		switch (choice) {
-			case 1:
-				AddCustomerInfo();
-				break;
-
-			case 2:
-				SignIn();
-
-				break;
-
-		}
-
-	}
-
-	private static void SignIn() {
-		// TODO Auto-generated method stub
-		// System.out.println("Enter your email: ");
-		// String email = scanner.nextLine();
-
-		// login with a password to be implemented but needs the customer table in the
-		// database to include a password column
-		// or add a login table that links to the customer table to store a customer's
-		// email and password
-		// System.out.println("Enter your password: ");
-		// String password = scanner.nextLine();
-
-	}
 }
