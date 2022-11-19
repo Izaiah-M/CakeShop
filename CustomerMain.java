@@ -1,6 +1,6 @@
 package CakeShop;
 
-import java.util.*;
+import java.util.Scanner;
 import java.sql.SQLException;
 
 public class CustomerMain {
