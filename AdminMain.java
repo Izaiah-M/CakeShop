@@ -15,44 +15,8 @@ public class AdminMain {
 
 	public static void main(String[] args) throws SQLException {
 		System.out.println("Welcome Administrator, Login!!");
-		System.out.println("For admins,enter 1");
-		System.out.println("For customers,enter 2");
-		int choice = 0;
-		choice = scanner.nextInt();
-		scanner.nextLine();
 
-		switch (choice) {
-			case 1:
-				AdminDashboard();
-				break;
-
-			case 2:
-				CustomerDashboard();
-				break;
-
-		}
-
-	}
-
-	public static void AddCustomerInfo() throws SQLException {
-
-		System.out.println("Welcome to our Cake Shop");
-
-		System.out.println("Enter your name:");
-		String customername = scanner.nextLine();
-
-		System.out.println("Enter your email:");
-		String customeremail = scanner.nextLine();
-
-		System.out.println("Enter your contact:");
-		int customercontact = scanner.nextInt();
-		scanner.nextLine();
-
-		System.out.println("Enter your address:");
-		String customeraddress = scanner.nextLine();
-
-		Customer cs = new Customer(customername, customeremail, customercontact, customeraddress);
-		DatabaseConnect.AddCustomer(cs);
+		AdminDashboard();
 
 	}
 
@@ -63,7 +27,10 @@ public class AdminMain {
 		// name and password input
 		// it also takes in a scanner object as a parameter so that we can read input
 		// from the user in the console
-		boolean loginValid = DatabaseConnect.LoginAdmin(scanner);
+		
+		boolean loginValid;
+		do {
+		loginValid = DatabaseConnect.LoginAdmin(scanner);
 
 		if (loginValid == true) {
 			System.out.println("Admin menu");
@@ -102,27 +69,8 @@ public class AdminMain {
 			System.out.println("Please enter the correct credentials.");
 
 		}
-
-	}
-
-	public static void CustomerDashboard() throws SQLException {
-		System.out.println("Welcome to our Cake shop");
-		System.out.println("1.Sign Up");
-		System.out.println("2.Sign In");
-		int choice = scanner.nextInt();
-		scanner.nextLine();
-
-		switch (choice) {
-			case 1:
-				AddCustomerInfo();
-				break;
-
-			case 2:
-				SignIn();
-
-				break;
-
-		}
+		
+		}while(loginValid == false);
 
 	}
 
