@@ -45,6 +45,10 @@ public class Cakes {
 	public int getId() {
 		return id;
 	}
+	
+	public void setId(int id) {
+		this.id = id;
+	}
 
 	public String getCakeType() {
 		return cakeType;
@@ -94,4 +98,39 @@ public class Cakes {
 		this.cost = cost;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("***********************************\n");
+		sb.append("Cake's Details\n");
+		sb.append("ID: " + getId() + "\n");
+		sb.append("Type: " + getCakeType() + "\n");
+		sb.append("Flavour: " + getFlavour() + "\n");
+		sb.append("Message: " + getMessage() + "\n");
+		sb.append("Date Made: " + getDateMade() + "\n");
+		sb.append("Icing Type: " + getIcing() + "\n");
+		sb.append("Cost: " + getCost() + "\n");
+		sb.append("***********************************\n");
+		
+		return sb.toString();
+		
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

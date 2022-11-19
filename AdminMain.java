@@ -27,7 +27,7 @@ public class AdminMain {
 				break;
 
 			case 2:
-				AddCustomerInfo();
+				CustomerDashboard();
 				break;
 
 		}
@@ -83,15 +83,15 @@ public class AdminMain {
 					break;
 
 				case 2:
-					// DatabaseConnect.RemoveCake(scanner);
+					DatabaseConnect.RemoveCake(scanner);
 					break;
 
 				case 3:
-					// DatabaseConnect.ProductReport();
+					DatabaseConnect.ProductReport();
 					break;
 
 				case 4:
-					// DatabaseConnect.SalesReport();
+					DatabaseConnect.SalesReport();
 					break;
 
 				case 5:
@@ -106,7 +106,37 @@ public class AdminMain {
 	}
 
 	public static void CustomerDashboard() throws SQLException {
-		AddCustomerInfo();
+		System.out.println("Welcome to our Cake shop");
+		System.out.println("1.Sign Up");
+		System.out.println("2.Sign In");
+		int choice = scanner.nextInt();
+		scanner.nextLine();
+
+		switch (choice) {
+			case 1:
+				AddCustomerInfo();
+				break;
+
+			case 2:
+				SignIn();
+
+				break;
+
+		}
+
+	}
+
+	private static void SignIn() {
+		// TODO Auto-generated method stub
+		// System.out.println("Enter your email: ");
+		// String email = scanner.nextLine();
+
+		// login with a password to be implemented but needs the customer table in the
+		// database to include a password column
+		// or add a login table that links to the customer table to store a customer's
+		// email and password
+		// System.out.println("Enter your password: ");
+		// String password = scanner.nextLine();
 
 	}
 }
