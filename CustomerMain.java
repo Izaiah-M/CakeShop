@@ -36,23 +36,6 @@ public class CustomerMain {
         // System.out.println(me);
         // System.out.println(cart);
 
-        int choice = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("Welcome to our Cake Shop, where its all about flavour!!");
-
-        System.out.println("1. Sign In");
-        System.out.println("2. Sign out");
-
-        switch (choice) {
-            case 1:
-                SignIn();
-                break;
-
-            case 2:
-                AddCustomerInfo();
-                break;
-        }
 
     }
 
