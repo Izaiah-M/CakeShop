@@ -12,26 +12,27 @@ public class Main {
 	// is going to be used
 
 	public static void main(String[] args) throws SQLException {
-		System.out.println("I know you love cakes");
-		System.out.println("For admins,enter 1");
-		System.out.println("For customers,enter 2");
-		int choice = 0;
-		choice = scanner.nextInt();
-		scanner.nextLine();
-
-		switch (choice) {
-			case 1:
-				AdminDashboard();
-				break;
-
-			case 2:
-				AddCustomerInfo();
-				break;
-
-		}
-
-	}
-
+        System.out.println("I know you love cakes");
+        System.out.println("For admins,enter 1");
+        System.out.println("For customers,enter 2");
+        int choice = 0;
+        choice = scanner.nextInt();
+        scanner.nextLine();
+        
+        switch(choice) {
+        case 1:
+        	AdminDashboard();
+        	break;
+        	
+        case 2:
+        	CustomerDashboard();
+        	break;
+   
+        	
+        }
+ 
+    }
+	
 	public static void AddCustomerInfo() throws SQLException {
 
 		System.out.println("Welcome to our Cake Shop");
@@ -80,15 +81,15 @@ public class Main {
 					break;
 
 				case 2:
-					// DatabaseConnect.RemoveCake(scanner);
+					DatabaseConnect.RemoveCake(scanner);
 					break;
 
 				case 3:
-					// DatabaseConnect.ProductReport();
+					DatabaseConnect.ProductReport();
 					break;
 
 				case 4:
-					// DatabaseConnect.SalesReport();
+					DatabaseConnect.SalesReport();
 					break;
 
 				case 5:
@@ -103,7 +104,51 @@ public class Main {
 	}
 
 	public static void CustomerDashboard() throws SQLException {
-		AddCustomerInfo();
+		System.out.println("Welcome to our Cake shop");
+		System.out.println("1.Sign Up");
+		System.out.println("2.Sign In");
+		int choice = scanner.nextInt();
+		scanner.nextLine();
+		
+		switch (choice) {
+		case 1:
+	        AddCustomerInfo();
+	        break;
+	        
+		case 2:
+			SignIn();
+			
+			
+			
+			
+			
+			
+			
+			break;
+		
+		
 
+		
+		
+		
+		}
+		
+		
+	}
+
+	private static void SignIn() {
+		// TODO Auto-generated method stub
+//		System.out.println("Enter your email: ");
+//		String email = scanner.nextLine();
+		
+		//login with a password to be implemented but needs the customer table in the database to include a password column
+		//or add a login table that links to the customer table to store a customer's email and password
+//		System.out.println("Enter your password: ");
+//		String password = scanner.nextLine();
+		
+		
+		
 	}
 }
+
+

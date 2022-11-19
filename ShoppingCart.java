@@ -1,20 +1,21 @@
 package CakeShop;
 
-import java.applet.*;
-import java.awt.*;
-import java.net.*;
+//import java.applet.*;
+//import java.awt.*;
+//import java.net.*;
 import java.util.*;
 
 // This class is a simple container of shopping cart items.
 // It is observable, which means that it notifies any interested
 // classes whenever it changes.
 
+@SuppressWarnings("deprecation")
 public class ShoppingCart extends Observable {
-    protected Vector items; // the items in the cart
+    protected Vector<ShoppingCartItem> items; // the items in the cart
     protected int total; // the total item cost so far
 
     public ShoppingCart() {
-        items = new Vector();
+        items = new Vector<ShoppingCartItem>();
         total = 0;
     }
 
