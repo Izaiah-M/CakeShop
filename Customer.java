@@ -6,13 +6,19 @@ public class Customer {
 	private String email;
 	private int contact;
 	private String address;
-	private int totalCost = 0;
+	public ShoppingCart cart;
 
 	public Customer(String name, String email, int contact, String address) {
 		this.setName(name);
 		this.setEmail(email);
 		this.setContact(contact);
 		this.setAddress(address);
+	}
+
+	// Constructor that takes in a shopping cart object
+	public Customer(String name, ShoppingCart cart) {
+		this.setName(name);
+		this.cart = cart;
 	}
 
 	// Second constructor that takes in an ID.
@@ -22,33 +28,6 @@ public class Customer {
 		this.setContact(contact);
 		this.setAddress(address);
 		this.id = id;
-	}
-
-	// for adding up items in our cart and giving total summ of all the items
-	public int addItemToCart(String itemName, int itemPrice) {
-		totalCost += itemPrice;
-		return totalCost;
-	}
-
-	// Method to subract the price of the removed Item
-	public int removeFromCart(String itemName, int itemPrice) {
-		totalCost -= itemPrice;
-		return totalCost;
-	}
-
-	// Method to return Total amount of money spent
-	public void checkOutBalance() {
-		System.out.println(this.getName());
-		System.out.println(this.getEmail());
-		System.out.println(this.getContact());
-		System.out.println(this.getAddress());
-		System.out.println(this.getTotalCost());
-		System.out.println("Do you wish to continue with your purchase");
-	}
-
-	// Function to get total expenditure
-	public int getTotalCost() {
-		return totalCost;
 	}
 
 	public void setName(String name) {
@@ -85,6 +64,11 @@ public class Customer {
 
 	public String getAddress() {
 		return address;
+	}
+
+	// Should return for us, customer name and shopping cart
+	public String toString() {
+		return name + " purchasing: " + cart;
 	}
 
 }

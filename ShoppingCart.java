@@ -1,79 +1,83 @@
 package CakeShop;
 
-import java.applet.*;
-import java.awt.*;
-import java.net.*;
+// import java.applet.*;
+// import java.awt.*;
+// import java.net.*;
 import java.util.*;
 
-// This class is a simple container of shopping cart items.
+// This class is a simple container of shopping cart cakes.
 // It is observable, which means that it notifies any interested
 // classes whenever it changes.
 
-public class ShoppingCart extends Observable {
-    protected Vector items; // the items in the cart
-    protected int total; // the total item cost so far
+public class ShoppingCart {
+
+    // Our vector is like an array and things being added to it are the cakes the
+    // customer has bought
+    Vector<Object> cakes;
+    protected int totalCost = 0;
 
     public ShoppingCart() {
-        items = new Vector();
-        total = 0;
+        cakes = new Vector<Object>();
     }
 
-    // Add a new item and update the total
+    // Adding a new cake and updating the totalCost
+    // Takes in an object of the cake
 
-    public void addItem(ShoppingCartItem newItem) {
+    public void addItem(ShoppingCartItem newCake) {
 
         // See if there's already an item like this in the cart
-        int currIndex = items.indexOf(newItem);
+        int currIndex = cakes.indexOf(newCake);
 
+        // Our event listener to help with the adding and removing from the cart
         ShoppingCartEvent event = new ShoppingCartEvent();
 
         if (currIndex == -1) {
             // If the item is new, add it to the cart
-            items.addElement(newItem);
-            event.item = newItem;
+            cakes.add(newCake);
+            event.item = newCake;
             event.eventType = ShoppingCartEvent.ADDED_ITEM;
         } else {
 
             // If there is a similar item, just add the quantities
-            ShoppingCartItem currItem = (ShoppingCartItem) items.elementAt(currIndex);
+            ShoppingCartItem currItem = (ShoppingCartItem) cakes.elementAt(currIndex);
 
-            currItem.add(newItem);
+            currItem.add(newCake);
             event.item = currItem;
             event.eventType = ShoppingCartEvent.CHANGED_ITEM;
         }
 
-        total += newItem.cakeCost * newItem.quantity;
+        totalCost += newCake.cakeCost * newCake.quantity;
 
         // Tell the observers what just happened
-        setChanged();
-        notifyObservers(event);
+        // setChanged();
+        // notifyObservers(event);
     }
 
     // Remove item removes an item from the cart. Since it removes
-    // n items from the cart at a time, if there are more than n items
+    // n cakes from the cart at a time, if there are more than n cakes
     // in the cart, it just subtracts n from the quantity.
 
     public void removeItem(ShoppingCartItem oldItem) {
         // Find this object in the cart
-        int currIndex = items.indexOf(oldItem);
+        int currIndex = cakes.indexOf(oldItem);
         ShoppingCartEvent event = new ShoppingCartEvent();
 
         if (currIndex == -1) {
             // If it wasn't there, just return, assume everything's okay
             return;
         } else {
-            ShoppingCartItem currItem = (ShoppingCartItem) items.elementAt(currIndex);
+            ShoppingCartItem currItem = (ShoppingCartItem) cakes.elementAt(currIndex);
 
-            // If you are trying to subtract more items than are in the cart,
+            // If you are trying to subtract more cakes than are in the cart,
             // adjust the amount you want to subtract so it is equal to the
-            // number of items in the cart.
+            // number of cakes in the cart.
 
             if (oldItem.quantity > currItem.quantity) {
                 oldItem.quantity = currItem.quantity;
             }
 
-            // Adjust the total
-            total -= oldItem.cakeCost * oldItem.quantity;
+            // Adjust the totalCost
+            totalCost -= oldItem.cakeCost * oldItem.quantity;
 
             currItem.subtract(oldItem);
 
@@ -83,7 +87,7 @@ public class ShoppingCart extends Observable {
             // If the quantity drops to 0, remove the item entirely
 
             if (currItem.quantity == 0) {
-                items.removeElementAt(currIndex);
+                cakes.removeElementAt(currIndex);
                 event.eventType = ShoppingCartEvent.REMOVED_ITEM;
             }
 
@@ -91,17 +95,33 @@ public class ShoppingCart extends Observable {
 
         // Tell everyone what happened
 
-        setChanged();
-        notifyObservers(event);
+        // setChanged();
+        // notifyObservers(event);
     }
 
-    // getItems returns a copy of all the items in the cart
+    // getItems returns a copy of all the cakes in the cart
 
-    public ShoppingCartItem[] getItems() {
-        ShoppingCartItem[] itemArray = new ShoppingCartItem[items.size()];
+    // public Vector<Object> getItems() {
+    // return cakes;
+    // }
 
-        items.copyInto(itemArray);
+    public void getItems() {
 
-        return itemArray;
+        Object[] cakeArr = cakes.toArray();
+
+        for (Object cake : cakeArr) {
+            System.out.println(cake);
+        }
+
+    }
+
+    // Vector method to help us return Our cakes
+    public Vector<Object> cakesBought() {
+        return cakes;
+    }
+
+    // To hep us return a nice array of our things
+    public String toString() {
+        return this.cakesBought().toString();
     }
 }

@@ -3,7 +3,7 @@ package CakeShop;
 import java.sql.SQLException;
 import java.util.*;
 
-public class Main {
+public class AdminMain {
 	static final Scanner scanner = new Scanner(System.in);
 	// create one single static scanner object to be used throughout the whole
 	// program
@@ -11,8 +11,10 @@ public class Main {
 	// the scanner object is then passed as an argument to the method calls where it
 	// is going to be used
 
+	// Made this main class to handle administration operations
+
 	public static void main(String[] args) throws SQLException {
-		System.out.println("I know you love cakes");
+		System.out.println("Welcome Administrator, Login!!");
 		System.out.println("For admins,enter 1");
 		System.out.println("For customers,enter 2");
 		int choice = 0;
@@ -55,6 +57,7 @@ public class Main {
 	}
 
 	public static void AdminDashboard() throws SQLException {
+
 		System.out.println("Admin login");
 		// this is the method used to log admins into the system by validating the user
 		// name and password input

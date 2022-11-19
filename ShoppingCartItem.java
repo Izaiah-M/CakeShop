@@ -4,7 +4,7 @@ package CakeShop;
 
 // shopping cart.
 
-public class ShoppingCartItem implements Cloneable {
+public class ShoppingCartItem extends Cakes implements Cloneable {
 	public String cakeName;
 	public int cakeCost;
 	public int quantity;
@@ -69,6 +69,6 @@ public class ShoppingCartItem implements Cloneable {
 	// Create a printable version of this object
 
 	public String toString() {
-		return cakeName + " cost: " + cakeCost + " qty: " + quantity + " desc: ";
+		return cakeName + " cost: " + cakeCost + " qty: " + quantity;
 	}
 }
