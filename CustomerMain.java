@@ -35,7 +35,7 @@ public class CustomerMain {
 
         // System.out.println(me);
         // System.out.println(cart);
-        
+
         int choice = scanner.nextInt();
         scanner.nextLine();
 
@@ -50,12 +50,7 @@ public class CustomerMain {
                 break;
 
             case 2:
-                try {
-                    AddCustomerInfo();
-                } catch (SQLException e) {
-                    // TODO Auto-generated catch block
-                    e.printStackTrace();
-                }
+                AddCustomerInfo();
                 break;
         }
 
