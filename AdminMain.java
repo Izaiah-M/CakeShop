@@ -74,17 +74,5 @@ public class AdminMain {
 
 	}
 
-	private static void SignIn() {
-		// TODO Auto-generated method stub
-		// System.out.println("Enter your email: ");
-		// String email = scanner.nextLine();
 
-		// login with a password to be implemented but needs the customer table in the
-		// database to include a password column
-		// or add a login table that links to the customer table to store a customer's
-		// email and password
-		// System.out.println("Enter your password: ");
-		// String password = scanner.nextLine();
-
-	}
 }

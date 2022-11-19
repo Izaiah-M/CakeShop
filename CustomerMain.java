@@ -18,7 +18,24 @@ public class CustomerMain {
         // they pick items they need
         // items are added or removed from the cart
         // Check out receipt is generated.
+        
+        // ShoppingCart cart = new ShoppingCart();
+        // ShoppingCartItem cake1 = new ShoppingCartItem("Chocolate Cake", 80000, 1);
+        // ShoppingCartItem cake3 = new ShoppingCartItem("Sponge Cake", 100000, 1);
+        // ShoppingCartItem cake2 = new ShoppingCartItem("Fruit Cake", 100000, 1);
 
+        // // Adding Items to the newly made cart
+        // cart.addItem(cake1);
+        // cart.addItem(cake2);
+        // cart.addItem(cake3);
+        // cart.getItems();
+
+        // // Adding the cart to the customer.
+        // Customer me = new Customer("Izaiah", cart);
+
+        // System.out.println(me);
+        // System.out.println(cart);
+        
         int choice = scanner.nextInt();
         scanner.nextLine();
 
@@ -42,22 +59,6 @@ public class CustomerMain {
                 break;
         }
 
-        // ShoppingCart cart = new ShoppingCart();
-        // ShoppingCartItem cake1 = new ShoppingCartItem("Chocolate Cake", 80000, 1);
-        // ShoppingCartItem cake3 = new ShoppingCartItem("Sponge Cake", 100000, 1);
-        // ShoppingCartItem cake2 = new ShoppingCartItem("Fruit Cake", 100000, 1);
-
-        // // Adding Items to the newly made cart
-        // cart.addItem(cake1);
-        // cart.addItem(cake2);
-        // cart.addItem(cake3);
-        // cart.getItems();
-
-        // // Adding the cart to the customer.
-        // Customer me = new Customer("Izaiah", cart);
-
-        // System.out.println(me);
-        // System.out.println(cart);
     }
 
     private static void SignIn() {
@@ -109,7 +110,7 @@ public class CustomerMain {
 				break;
 
 			case 2:
-//				SignIn();
+				SignIn();
 
 				break;
 
