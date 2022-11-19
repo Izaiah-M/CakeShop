@@ -6,7 +6,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-//import org.sqlite.*;
 import java.util.Scanner;
 
 public class DatabaseConnect {
@@ -22,6 +21,8 @@ public class DatabaseConnect {
 		stmt.setString(4, cstm.getAddress());
 		
 		stmt.executeUpdate();
+		
+		System.out.println("Welcome " +cstm.getName());
 	}
 	
 	public static boolean LoginAdmin(Scanner scanner) throws SQLException{
@@ -113,7 +114,7 @@ public class DatabaseConnect {
 		Cakes cake = new Cakes();
 
 		while(rs.next()) {
-			//TODO recreate cake objects with ids to be displayed to the admin
+			//recreate cake objects with ids to be displayed to the admin
 			cake.setId(rs.getInt("ID"));
 			cake.setCakeType(rs.getString("Type"));
 			cake.setFlavour(rs.getString("Flavour"));

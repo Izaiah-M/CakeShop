@@ -1,8 +1,8 @@
 package CakeShop;
 
-import java.applet.*;
-import java.awt.*;
-import java.net.*;
+//import java.applet.*;
+//import java.awt.*;
+//import java.net.*;
 import java.util.*;
 
 // This class is a simple container of shopping cart items.
