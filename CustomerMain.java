@@ -4,11 +4,11 @@ import java.util.Scanner;
 import java.sql.SQLException;
 
 public class CustomerMain {
-	final static Scanner scanner = new Scanner(System.in);
+    final static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args) throws SQLException {
-    	
-    	CustomerDashboard();
+
+        CustomerDashboard();
 
         // When a customer is created
         // They should be instantiated with a shopping cart object
@@ -18,7 +18,7 @@ public class CustomerMain {
         // they pick items they need
         // items are added or removed from the cart
         // Check out receipt is generated.
-        
+
         // ShoppingCart cart = new ShoppingCart();
         // ShoppingCartItem cake1 = new ShoppingCartItem("Chocolate Cake", 80000, 1);
         // ShoppingCartItem cake3 = new ShoppingCartItem("Sponge Cake", 100000, 1);
@@ -36,7 +36,6 @@ public class CustomerMain {
         // System.out.println(me);
         // System.out.println(cart);
 
-
     }
 
     private static void SignIn() {
@@ -52,51 +51,51 @@ public class CustomerMain {
         // String password = scanner.nextLine();
 
     }
-    
-	public static void AddCustomerInfo() throws SQLException {
 
-		System.out.println("Welcome to our Cake Shop");
+    public static void AddCustomerInfo() throws SQLException {
 
-		System.out.println("Enter your name:");
-		String customername = scanner.nextLine();
+        System.out.println("Welcome to our Cake Shop");
 
-		System.out.println("Enter your email:");
-		String customeremail = scanner.nextLine();
+        System.out.println("Enter your name:");
+        String customername = scanner.nextLine();
 
-		System.out.println("Enter your contact:");
-		int customercontact = scanner.nextInt();
-		scanner.nextLine();
+        System.out.println("Enter your email:");
+        String customeremail = scanner.nextLine();
 
-		System.out.println("Enter your address:");
-		String customeraddress = scanner.nextLine();
+        System.out.println("Enter your contact:");
+        int customercontact = scanner.nextInt();
+        scanner.nextLine();
 
-		System.out.println("Enter your new password:");
-		String customerpassword = scanner.nextLine();
+        System.out.println("Enter your address:");
+        String customeraddress = scanner.nextLine();
 
-		Customer cs = new Customer(customername, customeremail, customercontact, customeraddress,customerpassword);
-		DatabaseConnect.AddCustomer(cs);
+        System.out.println("Enter your new password:");
+        String customerpassword = scanner.nextLine();
 
-	}
-	
-	public static void CustomerDashboard() throws SQLException {
-		System.out.println("Welcome to our Cake shop");
-		System.out.println("1.Sign Up");
-		System.out.println("2.Sign In");
-		int choice = scanner.nextInt();
-		scanner.nextLine();
+        Customer cs = new Customer(customername, customeremail, customercontact, customeraddress, customerpassword);
+        DatabaseConnect.AddCustomer(cs);
 
-		switch (choice) {
-			case 1:
-				AddCustomerInfo();
-				break;
+    }
 
-			case 2:
-				SignIn();
+    public static void CustomerDashboard() throws SQLException {
+        System.out.println("Welcome to our Cake shop");
+        System.out.println("1.Sign Up");
+        System.out.println("2.Sign In");
+        int choice = scanner.nextInt();
+        scanner.nextLine();
 
-				break;
+        switch (choice) {
+            case 1:
+                AddCustomerInfo();
+                break;
 
-		}
+            case 2:
+                SignIn();
 
-	}
+                break;
+
+        }
+
+    }
 
 }
