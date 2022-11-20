@@ -6,13 +6,15 @@ public class Customer {
 	private String email;
 	private int contact;
 	private String address;
+	private String password;
 	public ShoppingCart cart;
 
-	public Customer(String name, String email, int contact, String address) {
+	public Customer(String name, String email, int contact, String address, String password) {
 		this.setName(name);
 		this.setEmail(email);
 		this.setContact(contact);
 		this.setAddress(address);
+		this.setPassword(password);
 	}
 
 	// Constructor that takes in a shopping cart object
@@ -45,6 +47,13 @@ public class Customer {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+	public void setPassword(String Password) {
+		this.password = Password;
+	}
+	
+	public void AddCart(ShoppingCart cart1) {
+		this.cart = cart1;
+	}
 
 	public String getName() {
 		return name;
@@ -65,10 +74,17 @@ public class Customer {
 	public String getAddress() {
 		return address;
 	}
+	public String getPassword() {
+		return this.password;
+	}
+
+	public ShoppingCart getCart() {
+		return this.cart;
+	}
 
 	// Should return for us, customer name and shopping cart
 	public String toString() {
-		return name + " purchasing: " + cart;
+		return this.name + " purchasing: " + this.cart;
 	}
 
 }
