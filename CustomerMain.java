@@ -70,7 +70,10 @@ public class CustomerMain {
 		System.out.println("Enter your address:");
 		String customeraddress = scanner.nextLine();
 
-		Customer cs = new Customer(customername, customeremail, customercontact, customeraddress);
+		System.out.println("Enter your new password:");
+		String customerpassword = scanner.nextLine();
+
+		Customer cs = new Customer(customername, customeremail, customercontact, customeraddress,customerpassword);
 		DatabaseConnect.AddCustomer(cs);
 
 	}

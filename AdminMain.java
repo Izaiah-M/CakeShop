@@ -40,7 +40,7 @@ public class AdminMain {
 			System.out.println("2. Remove Cake from database");
 			System.out.println("3. Product Report");
 			System.out.println("4. Sales report");
-			System.out.println("5. Logout of database");
+			System.out.println("5. Logout");
 			int answer = scanner.nextInt();
 			scanner.nextLine();
 

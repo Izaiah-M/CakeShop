@@ -14,11 +14,12 @@ public class DatabaseConnect {
 	public static void AddCustomer(Customer cstm) throws SQLException {
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
 		
-		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Customers(Name,Contact,Email,Address) VALUES(?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
+		PreparedStatement stmt = conn.prepareStatement("INSERT INTO Customers(Name,Contact,Email,Address,Password) VALUES(?,?,?,?,?);", Statement.RETURN_GENERATED_KEYS);
 		stmt.setString(1, cstm.getName());
 		stmt.setLong(2, cstm.getContact());
 		stmt.setString(3, cstm.getEmail());
 		stmt.setString(4, cstm.getAddress());
+		stmt.setString(5, cstm.getPassword());
 		
 		stmt.executeUpdate();
 		
@@ -162,7 +163,33 @@ public class DatabaseConnect {
 		System.out.println("Total Sales = " + TotalSales);
 	}
 	
-	
+	public void GenerateCatalog () throws SQLException{
+
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		Statement stmt = conn.createStatement();
+		
+		String query = "SELECT * FROM Cakes;";
+		
+		ResultSet rs = stmt.executeQuery(query);
+		
+		Cakes cake = new Cakes();
+
+		while(rs.next()) {
+			//recreate cake objects with ids to be displayed to the admin
+			cake.setId(rs.getInt("ID"));
+			cake.setCakeType(rs.getString("Type"));
+			cake.setFlavour(rs.getString("Flavour"));
+			cake.setDateMade(rs.getString("DateMade"));
+			cake.setIcing(rs.getString("Icing"));
+			cake.setCost(rs.getInt("Cost"));
+			System.out.println(cake);
+			
+		}
+
+		//TODO implement a vector or any suitable data structure to store all the cake objects returned from the database
+		// that data structure will then be returned from this function call and it will act as our catalog
+
+	}
 	
 	
 	
