@@ -15,16 +15,9 @@ public class AdminMain {
 
 	public static void main(String[] args) throws SQLException {
 		System.out.println("Welcome Administrator, Login!!");
-		System.out.println("Press 1 to login");
-		int choice = 0;
-		choice = scanner.nextInt();
-		scanner.nextLine();
 
-		switch (choice) {
-			case 1:
-				AdminDashboard();
-				break;
-		}
+		AdminDashboard();
+
 	}
 
 	public static void AdminDashboard() throws SQLException {
@@ -34,7 +27,10 @@ public class AdminMain {
 		// name and password input
 		// it also takes in a scanner object as a parameter so that we can read input
 		// from the user in the console
-		boolean loginValid = DatabaseConnect.LoginAdmin(scanner);
+		
+		boolean loginValid;
+		do {
+		loginValid = DatabaseConnect.LoginAdmin(scanner);
 
 		if (loginValid == true) {
 			System.out.println("Admin menu");
@@ -73,7 +69,10 @@ public class AdminMain {
 			System.out.println("Please enter the correct credentials.");
 
 		}
+		
+		}while(loginValid == false);
 
 	}
+
 
 }

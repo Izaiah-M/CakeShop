@@ -60,7 +60,6 @@ public class DatabaseConnect {
         		System.out.println("Logging in!!");
         		return true;
         	}else {
-        		System.out.println("Please Enter the correct username and password");
         		return false;
         	}
 	}
@@ -97,9 +96,18 @@ public class DatabaseConnect {
 		stmt.executeUpdate();
 	}
 
-	public static void RemoveCake(Scanner scanner) {
-		// TODO Auto-generated method stub
+	public static void RemoveCake(Scanner scanner) throws SQLException {
+		ProductReport();
+		System.out.println("Enter the id of the cake that you want to remove: ");
+		int delId = scanner.nextInt();
+		scanner.nextLine();
+
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
 		
+		PreparedStatement stmt = conn.prepareStatement("DELETE FROM Cakes WHERE ID = ?",Statement.RETURN_GENERATED_KEYS);
+		stmt.setLong(1,delId);
+		stmt.executeUpdate();
+		ProductReport();
 	}
 
 	public static void ProductReport() throws SQLException {
@@ -128,9 +136,30 @@ public class DatabaseConnect {
 		
 	}
 
-	public static void SalesReport() {
-		// TODO Auto-generated method stub
+	public static void SalesReport() throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		Statement stmt = conn.createStatement();
 		
+		String query = "SELECT * FROM Sales;";
+		
+		ResultSet rs = stmt.executeQuery(query);
+		
+		Sales sales = new Sales();
+		int TotalSales = 0;
+
+		while(rs.next()) {
+			//recreate cake objects with ids to be displayed to the admin
+			sales.setSalesId(rs.getInt("ID"));
+			sales.setCakeDescription(rs.getString("Cake Description"));
+			sales.setDateOfPurchased(rs.getString("Date"));
+			sales.setCost(rs.getInt("Price"));
+			System.out.println(sales);
+			
+			TotalSales += rs.getInt("Price");
+			
+		}		
+		
+		System.out.println("Total Sales = " + TotalSales);
 	}
 	
 	
