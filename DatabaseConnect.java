@@ -60,7 +60,6 @@ public class DatabaseConnect {
         		System.out.println("Logging in!!");
         		return true;
         	}else {
-        		System.out.println("Please Enter the correct username and password");
         		return false;
         	}
 	}
@@ -97,9 +96,18 @@ public class DatabaseConnect {
 		stmt.executeUpdate();
 	}
 
-	public static void RemoveCake(Scanner scanner) {
-		// TODO Auto-generated method stub
+	public static void RemoveCake(Scanner scanner) throws SQLException {
+		ProductReport();
+		System.out.println("Enter the id of the cake that you want to remove: ");
+		int delId = scanner.nextInt();
+		scanner.nextLine();
+
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
 		
+		PreparedStatement stmt = conn.prepareStatement("DELETE FROM Cakes WHERE ID = ?",Statement.RETURN_GENERATED_KEYS);
+		stmt.setLong(1,delId);
+		stmt.executeUpdate();
+		ProductReport();
 	}
 
 	public static void ProductReport() throws SQLException {
