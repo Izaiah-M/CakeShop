@@ -218,6 +218,7 @@ public class DatabaseConnect {
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Customers WHERE Email = ? AND Password = ?",Statement.RETURN_GENERATED_KEYS);
 		stmt.setString(1, login.getEmail());
 		stmt.setString(2, login.getPassword());
+		System.out.println(login);
 
 		ResultSet rs = stmt.executeQuery();
 

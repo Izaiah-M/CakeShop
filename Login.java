@@ -24,4 +24,12 @@ public class Login {
 		this.password = password;
 	}
 
+	public String toString() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("Email: " + email + "\n");
+		sb.append("Password: " + password + "\n");
+
+		return sb.toString();
+	}
+
 }
