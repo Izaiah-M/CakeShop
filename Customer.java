@@ -9,6 +9,10 @@ public class Customer {
 	private String password;
 	public ShoppingCart cart;
 
+	public Customer() {
+		
+	}
+
 	public Customer(String name, String email, int contact, String address, String password) {
 		this.setName(name);
 		this.setEmail(email);

@@ -38,18 +38,24 @@ public class CustomerMain {
 
     }
 
-    private static void SignIn() {
-        // TODO Auto-generated method stub
-        // System.out.println("Enter your email: ");
-        // String email = scanner.nextLine();
-
+    private static void SignIn() throws SQLException{
         // login with a password to be implemented but needs the customer table in the
-        // database to include a password column
-        // or add a login table that links to the customer table to store a customer's
-        // email and password
-        // System.out.println("Enter your password: ");
-        // String password = scanner.nextLine();
+        // database to include a password column DONE
 
+        Login login = new Login();
+
+        System.out.println("Enter your email: ");
+        String email = scanner.nextLine();
+        System.out.println("Enter your password: ");
+        String password = scanner.nextLine();
+
+        login.setEmail(email);
+        login.setPassword(password);
+
+        boolean result = DatabaseConnect.CustomerSignIn(login);
+
+        System.out.println(result);
+        
     }
 
     public static void AddCustomerInfo() throws SQLException {
