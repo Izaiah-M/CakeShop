@@ -136,9 +136,30 @@ public class DatabaseConnect {
 		
 	}
 
-	public static void SalesReport() {
-		// TODO Auto-generated method stub
+	public static void SalesReport() throws SQLException {
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		Statement stmt = conn.createStatement();
 		
+		String query = "SELECT * FROM Sales;";
+		
+		ResultSet rs = stmt.executeQuery(query);
+		
+		Sales sales = new Sales();
+		int TotalSales = 0;
+
+		while(rs.next()) {
+			//recreate cake objects with ids to be displayed to the admin
+			sales.setSalesId(rs.getInt("ID"));
+			sales.setCakeDescription(rs.getString("Cake Description"));
+			sales.setDateOfPurchased(rs.getString("Date"));
+			sales.setCost(rs.getInt("Price"));
+			System.out.println(sales);
+			
+			TotalSales += rs.getInt("Price");
+			
+		}		
+		
+		System.out.println("Total Sales = " + TotalSales);
 	}
 	
 	
