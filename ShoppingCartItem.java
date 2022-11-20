@@ -5,16 +5,25 @@ package CakeShop;
 // shopping cart.
 
 public class ShoppingCartItem extends Cakes implements Cloneable {
-	public String cakeName;
+	public String cakeType;
 	public int cakeCost;
 	public int quantity;
 
 	public ShoppingCartItem() {
+
 	}
 
-	public ShoppingCartItem(String cakeName, int cakeCost,
-			int quantity) {
-		this.cakeName = cakeName;
+	// Is ths what you meant by adding the super to the ShoppingCartItem from Cakes
+	public ShoppingCartItem(int id, String cakeType, String flavour, String message, String dateMade, String icing,
+			int cakeCost) {
+		super(id, cakeType, flavour, message, dateMade, icing, cakeCost);
+		this.cakeType = cakeType;
+		this.cakeCost = cakeCost;
+		// this.quantity = quantity;
+	}
+
+	public ShoppingCartItem(String cakeType, int cakeCost, int quantity) {
+		this.cakeType = cakeType;
 		this.cakeCost = cakeCost;
 		this.quantity = quantity;
 	}
@@ -40,7 +49,7 @@ public class ShoppingCartItem extends Cakes implements Cloneable {
 	// always a good idea to do this.
 
 	public int hashCode() {
-		return cakeName.hashCode() + cakeCost;
+		return cakeType.hashCode() + cakeCost;
 	}
 
 	// The equals method does something a little dirty here, it only
@@ -56,19 +65,19 @@ public class ShoppingCartItem extends Cakes implements Cloneable {
 
 		ShoppingCartItem otherItem = (ShoppingCartItem) other;
 
-		return (cakeName.equals(otherItem.cakeName)) &&
+		return (cakeType.equals(otherItem.cakeType)) &&
 				(cakeCost == otherItem.cakeCost);
 	}
 
 	// Create a copy of this object
 
 	public ShoppingCartItem copy() {
-		return new ShoppingCartItem(cakeName, cakeCost, quantity);
+		return new ShoppingCartItem(cakeType, cakeCost, quantity);
 	}
 
 	// Create a printable version of this object
 
 	public String toString() {
-		return cakeName + " cost: " + cakeCost + " qty: " + quantity;
+		return cakeType + " cost: " + cakeCost + " qty: " + quantity;
 	}
 }
