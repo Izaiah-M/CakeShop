@@ -172,6 +172,7 @@ public class DatabaseConnect {
 		}
 
 		System.out.println("Total Sales = " + TotalSales);
+
 	}
 
 	public void GenerateCatalog() throws SQLException {
@@ -210,4 +211,28 @@ public class DatabaseConnect {
 
 	}
 
+	public static boolean CustomerSignIn(Login login) throws SQLException {
+		Customer customer = new Customer();
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+
+		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Customers WHERE Email = ? AND Password = ?",Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, login.getEmail());
+		stmt.setString(2, login.getPassword());
+
+		ResultSet rs = stmt.executeQuery();
+
+		while (rs.next()) {
+			customer.setName(rs.getString("Name"));
+			customer.setEmail(rs.getString("Email"));
+			customer.setContact(rs.getInt("Contact"));
+			customer.setAddress(rs.getString("Address"));
+
+		}
+
+		if (login.getPassword() == customer.getPassword() && login.getEmail() == customer.getEmail()) {
+			return true;
+		} else {
+			return false;
+		}
+	}
 }
