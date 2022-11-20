@@ -51,8 +51,11 @@ public class Customer {
 		this.password = Password;
 	}
 	
-	public void AddCart(ShoppingCart cart1) {
-		this.cart = cart1;
+	//TODO adding shopping cart
+	//would this make more sense as in the part of adding and attaching a cart object to the Customer?
+	public void AddCart() {
+		ShoppingCart shoppingCart = new ShoppingCart();
+		this.cart = shoppingCart;
 	}
 
 	public String getName() {
