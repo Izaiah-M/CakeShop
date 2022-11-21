@@ -167,10 +167,12 @@ public class CustomerMain {
         // So here the custom order is made
         Cakes customOrder = new Cakes(Ctype, Cflavour, Cmessage, Cdate, Cicing, Cprice);
 
-        // Then here the custom order is passed as our shopping cart Item
+        // Then here the custom order is passed as our shopping cart Item cause remember
+        // our shopping Cart Item can also take in a Cake Object
         ShoppingCartItem cake = new ShoppingCartItem(customOrder);
 
-        // Then here, that item, is passed into the cart
+        // Then here, that item, is passed into the cart, our SoppingCart takes in
+        // objects of ShopppingcartItem
         ShoppingCart cart = new ShoppingCart();
         cart.addItem(cake);
 
