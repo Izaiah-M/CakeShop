@@ -176,13 +176,17 @@ public class CustomerMain {
         ShoppingCart cart = new ShoppingCart();
         cart.addItem(cake);
 
-        // Maybe the other thing, here should we return the item(cake)...oba the cart
-        // itself(with the cake in the cart)
-        // Oh and another thing, I am going to go th Shopping Cart Item and make it take
-        // in the toString() method of the Cakes class.
-        // Oh also, in your string builder for the Cakes class, can we add one more
-        // thing to show, which is quantity?
-        // Chake cakes, line 27...s
+        /*
+         * Maybe the other thing, here should we return the item(cake)...oba the cart
+         * itself(with the cake in the cart)?
+         * Oh and another thing, I am going to go to the Shopping Cart Item and make it
+         * take
+         * in/inherit/use the toString() method of the Cakes class which has the string
+         * builder.
+         * Oh also, in your string builder for the Cakes class, can we add one more
+         * thing to show, which is quantity?
+         * Check cakes, line 27...s
+         */
         return cake;
     }
 
