@@ -158,7 +158,7 @@ public class CustomerMain {
         // So what is happening(What I have understood from the above code, the fields
         // of the cake are passed into the cake object)
         // I have changed the name of cake to customorder
-        // Then passed that custom Order as our Shopping cart Item named cake
+        // Then passed that custom Order as our Shopping cart Item with the name cake
         // Then added that cake to the shopping cart using the addItem method which
         // takes in a ShoppingCartItem Object
         // Is this kawa?
