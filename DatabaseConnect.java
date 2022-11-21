@@ -211,7 +211,7 @@ public class DatabaseConnect {
 
 	}
 
-	public static boolean CustomerSignIn(Login login) throws SQLException {
+	public static Customer CustomerSignIn(Login login) throws SQLException {
 		Customer customer = new Customer();
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
 
@@ -231,9 +231,9 @@ public class DatabaseConnect {
 		}
 
 		if ((login.getPassword().equals(customer.getPassword())) && (login.getEmail().equals(customer.getEmail()))) {
-			return true;
+			return customer;
 		} else {
-			return false;
+			return null;
 		}
 	}
 }
