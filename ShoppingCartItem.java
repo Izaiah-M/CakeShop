@@ -8,14 +8,23 @@ public class ShoppingCartItem extends Cakes implements Cloneable {
 	protected String cakeType;
 	protected int cakeCost;
 	protected int quantity;
-	protected Cakes cake;
+	// protected Cakes cake;
+	//i think we can remove these since the quantity field
 
 	public ShoppingCartItem() {
 
 	}
 
+	//i meant somehting like this
 	public ShoppingCartItem(Cakes cake) {
-		this.cake = cake;
+		this.cakeType = cake.getCakeType();
+		this.flavour = cake.getFlavour();
+		this.message = cake.getMessage();
+		this.dateMade = cake.getDateMade();
+		this.icing = cake.getIcing();
+		this.quantity = cake.getQuantity();
+		this.cost = cake.getCost();
+
 	}
 
 	// Is ths what you meant by adding the super to the ShoppingCartItem from Cakes

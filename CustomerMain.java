@@ -5,16 +5,18 @@ import java.sql.SQLException;
 
 public class CustomerMain {
     final static Scanner scanner = new Scanner(System.in);
+    protected static Customer customer;
+
 
     public static void main(String[] args) throws SQLException {
 
         CustomerDashboard();
 
         // When a customer is created
-        // They should be instantiated with a shopping cart object
-        // The shopping cart object should take in a cake object
-        // Cakes are our items and are added into the cart
-        // When the info of the customer is passed in they see the cake data base items,
+        // They should be instantiated with a shopping cart object DONE
+        // The shopping cart object should take in a cake object DONE
+        // Cakes are our items and are added into the cart DONE
+        // When the info of the customer is passed in they see the cake data base items, DONE
         // they pick items they need
         // items are added or removed from the cart
         // Check out receipt is generated.
@@ -38,7 +40,7 @@ public class CustomerMain {
 
     }
 
-    private static void SignIn() throws SQLException {
+    private static boolean SignIn() throws SQLException {
         // login with a password to be implemented but needs the customer table in the
         // database to include a password column DONE
 
@@ -52,13 +54,17 @@ public class CustomerMain {
         login.setEmail(email);
         login.setPassword(password);
 
-        boolean result = DatabaseConnect.CustomerSignIn(login);
+        //the DatabaseConnect.CustomerSignIn() method returns a customer object
+        //we will access the shopping cart of this customer object later on when the customer is ordering
+        customer = DatabaseConnect.CustomerSignIn(login);
 
-        System.out.println(result);
-
+        if (customer != null) {
+            return true;
+        }
+        return false;
     }
 
-    public static void AddCustomerInfo() throws SQLException {
+    public static Customer AddCustomerInfo() throws SQLException {
 
         System.out.println("Welcome to our Cake Shop");
 
@@ -81,6 +87,7 @@ public class CustomerMain {
         Customer cs = new Customer(customername, customeremail, customercontact, customeraddress, customerpassword);
         DatabaseConnect.AddCustomer(cs);
 
+        return cs;
     }
 
     public static void CustomerDashboard() throws SQLException {
@@ -93,12 +100,23 @@ public class CustomerMain {
         switch (choice) {
             case 1:
                 // this is used to add a customers, information to the database
-                AddCustomerInfo();
+                customer = AddCustomerInfo();
+                CustomerMenu();
                 break;
 
             case 2:
                 // this is used to check for a customers information from the database
-                SignIn();
+                //we keep on 
+                boolean signIn;
+                do{
+                    signIn = SignIn();
+                    if (signIn == true) {
+                        CustomerMenu();
+                    } else{
+                        System.out.println("Please sign in with the correct credentials or Sign up");
+                    }
+                } while(signIn == false);
+                
                 break;
 
         }
@@ -125,6 +143,7 @@ public class CustomerMain {
                 // method, so the only issue remaining is how to add that custom order to the
                 // customers' cart
                 Cakes CustomerOrder = CustomerOrdering();
+                System.out.println(CustomerOrder);
                 break;
 
             default:
@@ -187,7 +206,9 @@ public class CustomerMain {
          * thing to show, which is quantity?
          * Check cakes, line 27...s
          */
-        return cake;
+
+         //i think we can return the cake that the customer ordered for
+        return customOrder;
     }
 
 }

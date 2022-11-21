@@ -6,7 +6,7 @@ public class Cakes {
 	protected String message;
 	protected String dateMade;
 	protected String icing;
-	protected int quantity;
+	protected int quantity = 1;
 	protected int cost;
 	protected int id;
 
@@ -118,7 +118,19 @@ public class Cakes {
 	public void setCost(int cost) {
 		this.cost = cost;
 	}
+	
+	public int getQuantity() {
+		return this.quantity;
+	}
 
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
+	}
+
+	//ive added the quantity to the string builder and now it can return the total cost of the 
+	//cakes if the quantity is greater than 1
+	//I also set the quantity as one when the object is instantiated so that it doesnt bring a zero at the
+	//point of printing
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("***********************************\n");
@@ -129,11 +141,13 @@ public class Cakes {
 		sb.append("Message: " + getMessage() + "\n");
 		sb.append("Date Made: " + getDateMade() + "\n");
 		sb.append("Icing Type: " + getIcing() + "\n");
-		sb.append("Cost: " + getCost() + "\n");
+		sb.append("Quantity: " + getQuantity() + "\n");
+		sb.append("Cost: " + (getCost() * getQuantity()) + "\n");
 		sb.append("***********************************\n");
 
 		return sb.toString();
 
 	}
+
 
 }
