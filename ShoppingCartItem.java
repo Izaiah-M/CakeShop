@@ -5,12 +5,17 @@ package CakeShop;
 // shopping cart.
 
 public class ShoppingCartItem extends Cakes implements Cloneable {
-	public String cakeType;
-	public int cakeCost;
-	public int quantity;
+	protected String cakeType;
+	protected int cakeCost;
+	protected int quantity;
+	protected Cakes cake;
 
 	public ShoppingCartItem() {
 
+	}
+
+	public ShoppingCartItem(Cakes cake) {
+		this.cake = cake;
 	}
 
 	// Is ths what you meant by adding the super to the ShoppingCartItem from Cakes

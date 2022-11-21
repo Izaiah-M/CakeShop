@@ -1,13 +1,13 @@
 package CakeShop;
 
 public class Cakes {
-	private String cakeType;
-	private String flavour;
-	private String message;
-	private String dateMade;
-	private String icing;
-	private int cost;
-	private int id;
+	protected String cakeType;
+	protected String flavour;
+	protected String message;
+	protected String dateMade;
+	protected String icing;
+	protected int cost;
+	protected int id;
 
 	public Cakes() {
 
@@ -21,8 +21,9 @@ public class Cakes {
 		this.icing = icing;
 		this.cost = cost;
 	}
-	
-	//overridden constructor to take in a cake object without a message written on it
+
+	// overridden constructor to take in a cake object without a message written on
+	// it
 	public Cakes(String cakeType, String flavour, String dateMade, String icing, int cost) {
 		this.cakeType = cakeType;
 		this.flavour = flavour;
@@ -45,7 +46,7 @@ public class Cakes {
 	public int getId() {
 		return id;
 	}
-	
+
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -110,27 +111,9 @@ public class Cakes {
 		sb.append("Icing Type: " + getIcing() + "\n");
 		sb.append("Cost: " + getCost() + "\n");
 		sb.append("***********************************\n");
-		
+
 		return sb.toString();
-		
+
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 }
