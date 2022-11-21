@@ -21,6 +21,25 @@ public class Cakes {
 		this.dateMade = dateMade;
 		this.icing = icing;
 		this.cost = cost;
+
+	}
+
+	// This constructor has the field quantity
+	// If we are to take this on
+	// Then we can remove the fields quantity from shopping cake Item...so that it
+	// just pulls from here straight
+	// Then, that would mean, in the custom order thing we would have to add a thing
+	// for quantity
+	// But this is in the event we chose to add the quamtity thing here.
+	public Cakes(String cakeType, String flavour, String message, String dateMade, String icing, int cost,
+			int quantity) {
+		this.cakeType = cakeType;
+		this.flavour = flavour;
+		this.message = message;
+		this.dateMade = dateMade;
+		this.icing = icing;
+		this.cost = cost;
+		this.quantity = quantity;
 	}
 
 	// overridden constructor to take in a cake object without a message written on
