@@ -58,8 +58,7 @@ public class Customer {
 	//TODO adding shopping cart
 	//would this make more sense as in the part of adding and attaching a cart object to the Customer?
 	public void AddCart() {
-		ShoppingCart shoppingCart = new ShoppingCart();
-		this.cart = shoppingCart;
+		this.cart = new ShoppingCart();
 	}
 
 	public String getName() {

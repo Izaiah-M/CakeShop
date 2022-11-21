@@ -127,9 +127,10 @@ public class CustomerMain {
         System.out.println("Catalog and Custom Order");
         System.out.println("Do you want to See the catalog or make a custom order");
         System.out.println("1. See Catalog");
-        System.out.println("2. Make a custom Order");
+        System.out.println("2. Make a custom Order\n");
 
         int choice = scanner.nextInt();
+        scanner.nextLine();
 
         switch (choice) {
             case 1:
@@ -173,16 +174,6 @@ public class CustomerMain {
         System.out.println("Enter the date when you want the cake.");
         Cdate = scanner.nextLine();
 
-        // I hope this is Kawa
-        // So what is happening(What I have understood from the above code, the fields
-        // of the cake are passed into the cake object)
-        // I have changed the name of cake to customorder
-        // Then passed that custom Order as our Shopping cart Item with the name cake
-        // Then added that cake to the shopping cart using the addItem method which
-        // takes in a ShoppingCartItem Object
-        // Is this kawa?
-        // You can revert to the old code if its not kawa
-
         // So here the custom order is made
         Cakes customOrder = new Cakes(Ctype, Cflavour, Cmessage, Cdate, Cicing, Cprice);
 
@@ -192,20 +183,14 @@ public class CustomerMain {
 
         // Then here, that item, is passed into the cart, our SoppingCart takes in
         // objects of ShopppingcartItem
-        ShoppingCart cart = new ShoppingCart();
-        cart.addItem(cake);
-
-        /*
-         * Maybe the other thing, here should we return the item(cake)...oba the cart
-         * itself(with the cake in the cart)?
-         * Oh and another thing, I am going to go to the Shopping Cart Item and make it
-         * take
-         * in/inherit/use the toString() method of the Cakes class which has the string
-         * builder.
-         * Oh also, in your string builder for the Cakes class, can we add one more
-         * thing to show, which is quantity?
-         * Check cakes, line 27...s
-         */
+        // ShoppingCart cart = new ShoppingCart();
+        // cart.addItem(cake);
+        //the above has been commented out since we are now using the customer's cart instance.
+        
+        //ive changed the set up of the Customer main so that we can now access the shopping cart of a given customer who
+        //is logged in at the moment, so we can just add the item to that shopping cart instead
+        customer.AddCart();
+        customer.cart.addItem(cake);
 
          //i think we can return the cake that the customer ordered for
         return customOrder;
