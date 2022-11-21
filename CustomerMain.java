@@ -92,16 +92,70 @@ public class CustomerMain {
 
         switch (choice) {
             case 1:
+            //this is used to add a customers, information to the database
                 AddCustomerInfo();
                 break;
 
             case 2:
+            //this is used to check for a customers information from the database
                 SignIn();
-
                 break;
 
         }
 
     }
+
+    public static void CustomerMenu() throws SQLException {
+        System.out.println("Catalog and Custom Order");
+        System.out.println("Do you want to See the catalog or make a custom order");
+        System.out.println("1. See Catalog");
+        System.out.println("2. Make a custom Order");
+
+        int choice = scanner.nextInt();
+
+        switch (choice) {
+            case 1:
+            //TODO work on adding items to cart from the catalog
+                DatabaseConnect.GenerateCatalog();
+                break;
+
+            case 2:
+            //here the customer creates their own cake object and it is then returned form the CustomerOrdering 
+            //method, so the only issue remaining is how to add that custom order to the customers' cart
+                Cakes CustomerOrder = CustomerOrdering();
+                break;
+        
+            default:
+                break;
+        }
+
+
+    }
+
+    public static Cakes CustomerOrdering() throws SQLException {
+		String Ctype = null, Cflavour = null, Cdate = null, Cicing = null, Cmessage = null;
+		int Cprice = 0;
+		System.out.println("Enter the type of the cake i.e fruit cake, forest cake, sponge cake, basic vanilla cake");
+		Ctype = scanner.nextLine();
+
+		System.out.println("Enter the flavour of the cake e.g orange, marble , chocolate ,vanilla");
+		Cflavour = scanner.nextLine();
+
+		System.out.println("Enter the icing type of the cake i.e fondant , whipped cream , butter cream");
+		Cicing = scanner.nextLine();
+        
+        System.out.println("Enter the message you want on the cake.");
+		Cmessage = scanner.nextLine();
+
+		System.out.println("Enter the price of the cake ");
+		Cprice = scanner.nextInt();
+        
+		System.out.println("Enter the date when you want the cake.");
+		Cdate = scanner.nextLine();
+
+		Cakes cake = new Cakes(Ctype, Cflavour,Cmessage, Cdate, Cicing, Cprice);
+
+        return cake;
+    } 
 
 }
