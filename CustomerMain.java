@@ -164,9 +164,13 @@ public class CustomerMain {
         // Is this kawa?
         // You can revert to the old code if its not kawa
 
+        // So here the custom order is made
         Cakes customOrder = new Cakes(Ctype, Cflavour, Cmessage, Cdate, Cicing, Cprice);
 
+        // Then here the custom order is passed as our shopping cart Item
         ShoppingCartItem cake = new ShoppingCartItem(customOrder);
+
+        // Then here, that item, is passed into the cart
         ShoppingCart cart = new ShoppingCart();
         cart.addItem(cake);
 
