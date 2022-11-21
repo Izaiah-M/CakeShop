@@ -175,7 +175,7 @@ public class DatabaseConnect {
 
 	}
 
-	public void GenerateCatalog() throws SQLException {
+	public static void GenerateCatalog() throws SQLException {
 
 		Vector<Cakes> catalog = new Vector<Cakes>();
 
@@ -218,7 +218,6 @@ public class DatabaseConnect {
 		PreparedStatement stmt = conn.prepareStatement("SELECT * FROM Customers WHERE Email = ? AND Password = ?",Statement.RETURN_GENERATED_KEYS);
 		stmt.setString(1, login.getEmail());
 		stmt.setString(2, login.getPassword());
-		System.out.println(login);
 
 		ResultSet rs = stmt.executeQuery();
 
@@ -227,10 +226,11 @@ public class DatabaseConnect {
 			customer.setEmail(rs.getString("Email"));
 			customer.setContact(rs.getInt("Contact"));
 			customer.setAddress(rs.getString("Address"));
+			customer.setPassword(rs.getString("Password"));
 
 		}
 
-		if (login.getPassword() == customer.getPassword() && login.getEmail() == customer.getEmail()) {
+		if ((login.getPassword().equals(customer.getPassword())) && (login.getEmail().equals(customer.getEmail()))) {
 			return true;
 		} else {
 			return false;
