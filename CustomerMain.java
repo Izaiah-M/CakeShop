@@ -38,7 +38,7 @@ public class CustomerMain {
 
     }
 
-    private static void SignIn() throws SQLException{
+    private static void SignIn() throws SQLException {
         // login with a password to be implemented but needs the customer table in the
         // database to include a password column DONE
 
@@ -55,7 +55,7 @@ public class CustomerMain {
         boolean result = DatabaseConnect.CustomerSignIn(login);
 
         System.out.println(result);
-        
+
     }
 
     public static void AddCustomerInfo() throws SQLException {
@@ -92,12 +92,12 @@ public class CustomerMain {
 
         switch (choice) {
             case 1:
-            //this is used to add a customers, information to the database
+                // this is used to add a customers, information to the database
                 AddCustomerInfo();
                 break;
 
             case 2:
-            //this is used to check for a customers information from the database
+                // this is used to check for a customers information from the database
                 SignIn();
                 break;
 
@@ -115,47 +115,69 @@ public class CustomerMain {
 
         switch (choice) {
             case 1:
-            //TODO work on adding items to cart from the catalog
+                // TODO work on adding items to cart from the catalog
                 DatabaseConnect.GenerateCatalog();
                 break;
 
             case 2:
-            //here the customer creates their own cake object and it is then returned form the CustomerOrdering 
-            //method, so the only issue remaining is how to add that custom order to the customers' cart
+                // here the customer creates their own cake object and it is then returned form
+                // the CustomerOrdering
+                // method, so the only issue remaining is how to add that custom order to the
+                // customers' cart
                 Cakes CustomerOrder = CustomerOrdering();
                 break;
-        
+
             default:
                 break;
         }
 
-
     }
 
     public static Cakes CustomerOrdering() throws SQLException {
-		String Ctype = null, Cflavour = null, Cdate = null, Cicing = null, Cmessage = null;
-		int Cprice = 0;
-		System.out.println("Enter the type of the cake i.e fruit cake, forest cake, sponge cake, basic vanilla cake");
-		Ctype = scanner.nextLine();
+        String Ctype = null, Cflavour = null, Cdate = null, Cicing = null, Cmessage = null;
+        int Cprice = 0;
+        System.out.println("Enter the type of the cake i.e fruit cake, forest cake, sponge cake, basic vanilla cake");
+        Ctype = scanner.nextLine();
 
-		System.out.println("Enter the flavour of the cake e.g orange, marble , chocolate ,vanilla");
-		Cflavour = scanner.nextLine();
+        System.out.println("Enter the flavour of the cake e.g orange, marble , chocolate ,vanilla");
+        Cflavour = scanner.nextLine();
 
-		System.out.println("Enter the icing type of the cake i.e fondant , whipped cream , butter cream");
-		Cicing = scanner.nextLine();
-        
+        System.out.println("Enter the icing type of the cake i.e fondant , whipped cream , butter cream");
+        Cicing = scanner.nextLine();
+
         System.out.println("Enter the message you want on the cake.");
-		Cmessage = scanner.nextLine();
+        Cmessage = scanner.nextLine();
 
-		System.out.println("Enter the price of the cake ");
-		Cprice = scanner.nextInt();
-        
-		System.out.println("Enter the date when you want the cake.");
-		Cdate = scanner.nextLine();
+        System.out.println("Enter the price of the cake ");
+        Cprice = scanner.nextInt();
 
-		Cakes cake = new Cakes(Ctype, Cflavour,Cmessage, Cdate, Cicing, Cprice);
+        System.out.println("Enter the date when you want the cake.");
+        Cdate = scanner.nextLine();
 
+        // I hope this is Kawa
+        // So what is happening(What I have understood from the above code, the fields
+        // of the cake are passed into the cake object)
+        // I have changed the name of cake to customorder
+        // Then passed that custom Order as our Shopping cart Item named cake
+        // Then added that cake to the shopping cart using the addItem method which
+        // takes in a ShoppingCartItem Object
+        // Is this kawa?
+        // You can revert to the old code if its not kawa
+
+        Cakes customOrder = new Cakes(Ctype, Cflavour, Cmessage, Cdate, Cicing, Cprice);
+
+        ShoppingCartItem cake = new ShoppingCartItem(customOrder);
+        ShoppingCart cart = new ShoppingCart();
+        cart.addItem(cake);
+
+        // Maybe the other thing, here should we return the item(cake)...oba the cart
+        // itself(with the cake in the cart)
+        // Oh and another thing, I am going to go th Shopping Cart Item and make it take
+        // in the toString() method of the Cakes class.
+        // Oh also, in your string builder for the Cakes class, can we add one more
+        // thing to show, which is quantity?
+        // Chake cakes, line 27...s
         return cake;
-    } 
+    }
 
 }

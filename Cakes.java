@@ -6,6 +6,7 @@ public class Cakes {
 	protected String message;
 	protected String dateMade;
 	protected String icing;
+	protected int quantity;
 	protected int cost;
 	protected int id;
 
