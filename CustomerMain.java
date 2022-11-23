@@ -21,22 +21,6 @@ public class CustomerMain {
         // items are added or removed from the cart
         // Check out receipt is generated.
 
-        // ShoppingCart cart = new ShoppingCart();
-        // ShoppingCartItem cake1 = new ShoppingCartItem("Chocolate Cake", 80000, 1);
-        // ShoppingCartItem cake3 = new ShoppingCartItem("Sponge Cake", 100000, 1);
-        // ShoppingCartItem cake2 = new ShoppingCartItem("Fruit Cake", 100000, 1);
-
-        // // Adding Items to the newly made cart
-        // cart.addItem(cake1);
-        // cart.addItem(cake2);
-        // cart.addItem(cake3);
-        // cart.getItems();
-
-        // // Adding the cart to the customer.
-        // Customer me = new Customer("Izaiah", cart);
-
-        // System.out.println(me);
-        // System.out.println(cart);
 
     }
 
@@ -140,9 +124,7 @@ public class CustomerMain {
 
             case 2:
                 // here the customer creates their own cake object and it is then returned form
-                // the CustomerOrdering
-                // method, so the only issue remaining is how to add that custom order to the
-                // customers' cart
+                // the CustomerOrdering method
                 Cakes CustomerOrder = CustomerOrdering();
                 System.out.println(CustomerOrder);
                 break;
@@ -170,6 +152,7 @@ public class CustomerMain {
 
         System.out.println("Enter the price of the cake ");
         Cprice = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("Enter the date when you want the cake.");
         Cdate = scanner.nextLine();
@@ -181,14 +164,9 @@ public class CustomerMain {
         // our shopping Cart Item can also take in a Cake Object
         ShoppingCartItem cake = new ShoppingCartItem(customOrder);
 
-        // Then here, that item, is passed into the cart, our SoppingCart takes in
+        // Then here, that item, is passed into the cart, our ShoppingCart takes in
         // objects of ShopppingcartItem
-        // ShoppingCart cart = new ShoppingCart();
-        // cart.addItem(cake);
-        //the above has been commented out since we are now using the customer's cart instance.
-        
-        //ive changed the set up of the Customer main so that we can now access the shopping cart of a given customer who
-        //is logged in at the moment, so we can just add the item to that shopping cart instead
+
         customer.AddCart();
         customer.cart.addItem(cake);
 

@@ -3,6 +3,8 @@ package CakeShop;
 import java.sql.SQLException;
 import java.util.*;
 
+//this class contains the admin user flow, from signing in to adding and removing
+//items from the database
 public class AdminMain {
 	static final Scanner scanner = new Scanner(System.in);
 	// create one single static scanner object to be used throughout the whole
@@ -34,7 +36,8 @@ public class AdminMain {
 
 		if (loginValid == true) {
 			System.out.println("Admin menu");
-
+			
+			//this is the admin menu which shows the admin the different activities that they can perform
 			System.out.println("What would you like to do?");
 			System.out.println("1. Add Cake to database");
 			System.out.println("2. Remove Cake from database");
@@ -46,18 +49,22 @@ public class AdminMain {
 
 			switch (answer) {
 				case 1:
+					//used to add a cake to the database
 					DatabaseConnect.AddCake(scanner);
 					break;
 
 				case 2:
+					//used to remove a cake from the database 
 					DatabaseConnect.RemoveCake(scanner);
 					break;
 
 				case 3:
+					//used to show the items currently in the database
 					DatabaseConnect.ProductReport();
 					break;
 
 				case 4:
+					//used to show the sales that have been made in the cake shop
 					DatabaseConnect.SalesReport();
 					break;
 
