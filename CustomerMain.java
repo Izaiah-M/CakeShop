@@ -129,8 +129,7 @@ public class CustomerMain {
                 int CakeChoice = scanner.nextInt();
                 scanner.nextLine();
                 //TODO check if the ID that the customer has entered is in the catalog
-                System.out.println(CakeChoice);
-
+                System.out.println(catalog.Cakeindex(CakeChoice));
                 break;
 
             case 2:
