@@ -31,5 +31,11 @@ public class CatalogInfo {
 
     }
 
+    //used the inbuilt binarySearch method of the Collections class to search for the id enterd by the user
+    public int Cakeindex(int num){
+        int index = Collections.binarySearch(CakeIds, num);
+        return index;
+    }
+
     
 }
