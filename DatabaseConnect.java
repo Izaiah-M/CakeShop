@@ -175,9 +175,14 @@ public class DatabaseConnect {
 
 	}
 
-	public static void GenerateCatalog() throws SQLException {
-
+	public static CatalogInfo GenerateCatalog() throws SQLException {
+		// a vector to store the cake objects returned from the database
 		Vector<Cakes> catalog = new Vector<Cakes>();
+
+		//a Vector to store the ids ofthe cake objects returned from the database
+		Vector<Integer> ids = new Vector<>();
+
+		//a vector to store both the catalog and the ids so that we can return both of them at a go
 
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
 		Statement stmt = conn.createStatement();
@@ -198,16 +203,18 @@ public class DatabaseConnect {
 			cake.setIcing(rs.getString("Icing"));
 			cake.setCost(rs.getInt("Cost"));
 			// System.out.println(cake);
+			ids.add(cake.getId());
 			catalog.add(cake);
 
 		}
 
-		System.out.println(catalog);
-
+		CatalogInfo CatalogInfo = new CatalogInfo();
+		CatalogInfo.setCakeList(catalog);
+		CatalogInfo.setCakeIds(ids);
 		// TODO implement a vector or any suitable data structure to store all the cake
-		// objects returned from the database
-		// that data structure will then be returned from this function call and it will
-		// act as our catalog
+		// objects returned from the database. im using the catalog info class that i created
+
+		return CatalogInfo;
 
 	}
 
