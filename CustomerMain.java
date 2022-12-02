@@ -1,6 +1,7 @@
 package CakeShop;
 
 import java.util.Scanner;
+import java.util.Vector;
 import java.sql.SQLException;
 
 public class CustomerMain {
@@ -119,11 +120,20 @@ public class CustomerMain {
         switch (choice) {
             case 1:
                 // TODO work on adding items to cart from the catalog
-                DatabaseConnect.GenerateCatalog();
+                CatalogInfo catalog = DatabaseConnect.GenerateCatalog();
+                System.out.println("-----------------------Catalog-----------------------");
+                System.out.println(catalog.getCakeList());
+                //TODO implementing a function where customers can see the catalog and choose an item from it
+                //and on choosing to buy that item, the item is removed from the database
+                System.out.println("Which Cake would you like to purchase from the catalog?(Enter the cake's Id)");
+                int CakeChoice = scanner.nextInt();
+                scanner.nextLine();
+                //TODO check if the ID that the customer has entered is in the catalog
+                System.out.println(catalog.Cakeindex(CakeChoice));
                 break;
 
             case 2:
-                // here the customer creates their own cake object and it is then returned form
+                // here the customer creates their own cake object and it is then returned from
                 // the CustomerOrdering method
                 Cakes CustomerOrder = CustomerOrdering();
                 System.out.println(CustomerOrder);
