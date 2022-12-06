@@ -6,7 +6,7 @@ import java.util.Vector;
 //This is a class that will help to store the information from the database in a way that is aeasy to use and access
 public class CatalogInfo {
     Vector<Cakes> CakeList;
-    Vector<Integer> CakeIds;
+    Vector<Integer> CakeIds; 
 
     public CatalogInfo(){
 
