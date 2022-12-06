@@ -1,7 +1,6 @@
 package CakeShop;
 
 import java.util.Scanner;
-import java.util.Vector;
 import java.sql.SQLException;
 
 public class CustomerMain {
@@ -112,7 +111,8 @@ public class CustomerMain {
         System.out.println("Catalog and Custom Order");
         System.out.println("Do you want to See the catalog or make a custom order");
         System.out.println("1. See Catalog");
-        System.out.println("2. Make a custom Order\n");
+        System.out.println("2. Make a custom Order");
+        System.out.println("3. Check Your Cart\n");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -123,13 +123,20 @@ public class CustomerMain {
                 CatalogInfo catalog = DatabaseConnect.GenerateCatalog();
                 System.out.println("-----------------------Catalog-----------------------");
                 System.out.println(catalog.getCakeList());
-                //TODO implementing a function where customers can see the catalog and choose an item from it
-                //and on choosing to buy that item, the item is removed from the database
+                // TODO implementing a function where customers can see the catalog and choose an item from it and on choosing to buy that item, the item is removed from the database
+                //when a customer enters the id of the cake, we run the getCake method of the catalog class and return that cake from the list
+                //we then add that item to the shopping cart.
                 System.out.println("Which Cake would you like to purchase from the catalog?(Enter the cake's Id)");
                 int CakeChoice = scanner.nextInt();
                 scanner.nextLine();
-                //TODO check if the ID that the customer has entered is in the catalog
-                System.out.println(catalog.Cakeindex(CakeChoice));
+                Cakes answer = catalog.getCake(CakeChoice);
+                if(answer == null) {
+                    System.out.println("Cake not found");
+                } else {
+                    ShoppingCartItem cake = new ShoppingCartItem(answer);
+                    customer.cart.addItem(cake);
+                    System.out.println(customer.getCart());
+                }
                 break;
 
             case 2:
@@ -137,6 +144,10 @@ public class CustomerMain {
                 // the CustomerOrdering method
                 Cakes CustomerOrder = CustomerOrdering();
                 System.out.println(CustomerOrder);
+                break;
+
+            case 3:
+                System.out.println(customer.getCart());
                 break;
 
             default:
@@ -177,7 +188,6 @@ public class CustomerMain {
         // Then here, that item, is passed into the cart, our ShoppingCart takes in
         // objects of ShopppingcartItem
 
-        customer.AddCart();
         customer.cart.addItem(cake);
 
          //i think we can return the cake that the customer ordered for
