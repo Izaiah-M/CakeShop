@@ -9,8 +9,9 @@ public class Customer {
 	private String password;
 	public ShoppingCart cart;
 
+	// this  automatically adds a new instance of the shopping cart to the customer when a new customer is created
 	public Customer() {
-		
+		this.AddCart();
 	}
 
 	public Customer(String name, String email, int contact, String address, String password) {
@@ -19,6 +20,8 @@ public class Customer {
 		this.setContact(contact);
 		this.setAddress(address);
 		this.setPassword(password);
+		this.AddCart();
+
 	}
 
 	// Constructor that takes in a shopping cart object
@@ -34,6 +37,7 @@ public class Customer {
 		this.setContact(contact);
 		this.setAddress(address);
 		this.id = id;
+		this.AddCart();
 	}
 
 	public void setName(String name) {

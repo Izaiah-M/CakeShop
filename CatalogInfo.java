@@ -37,5 +37,19 @@ public class CatalogInfo {
         return index;
     }
 
+    //added a method to return a given cake from the cake  list, which first checks if the customer has passed 
+    //the correct cake id, then finds the index of that id and then returns the item at that index in the Cakes list
+    //sine the ids are stored in the cakeIds at the same time as the cakes in the cake list so the ids correspond to the cakes
+    public Cakes getCake(int id) {
+        int C_index;
+        Cakes cake;
+        if(CakeIds.contains(id)){
+            C_index = CakeIds.indexOf(id);
+            cake = CakeList.get(C_index);
+            return cake;
+        }
+        return null;
+    }
+
     
 }
