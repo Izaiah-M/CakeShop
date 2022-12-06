@@ -161,7 +161,7 @@ public class DatabaseConnect {
 
 		while (rs.next()) {
 			// recreate cake objects with ids to be displayed to the admin
-			sales.setSalesId(rs.getInt("ID"));
+			sales.setSales_database_Id(rs.getInt("ID"));
 			sales.setCakeDescription(rs.getString("Cake Description"));
 			sales.setDateOfPurchased(rs.getString("Date"));
 			sales.setCost(rs.getInt("Price"));
@@ -243,4 +243,17 @@ public class DatabaseConnect {
 			return null;
 		}
 	}
+
+	public static void AddNewSale(Sales sales) throws SQLException{
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		PreparedStatement stmt = conn.prepareStatement(
+				"INSERT INTO Sales('Cake Description',Date,Price) VALUES(?,?,?)",
+				Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, sales.getCakeDescription());
+		stmt.setString(2, sales.getDateOfPurchased());
+		stmt.setLong(3, sales.getCost());
+
+		stmt.executeUpdate();
+	}
 }
+

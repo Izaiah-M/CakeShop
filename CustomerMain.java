@@ -6,6 +6,7 @@ import java.sql.SQLException;
 public class CustomerMain {
     final static Scanner scanner = new Scanner(System.in);
     protected static Customer customer;
+    protected static Sales sale;
 
 
     public static void main(String[] args) throws SQLException {
@@ -136,6 +137,10 @@ public class CustomerMain {
                     ShoppingCartItem cake = new ShoppingCartItem(answer);
                     customer.cart.addItem(cake);
                     System.out.println(customer.getCart());
+                    //make a new sales object and then pass it to the database
+                    //this is just a test to see if the cakes go to the sales database when the sale is made
+                    sale = new Sales(cake);
+                    DatabaseConnect.AddNewSale(sale);
                 }
                 break;
 
