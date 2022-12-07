@@ -8,7 +8,6 @@ public class CustomerMain {
     protected static Customer customer;
     protected static Sales sale;
 
-
     public static void main(String[] args) throws SQLException {
 
         CustomerDashboard();
