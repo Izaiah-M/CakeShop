@@ -6,6 +6,7 @@ import java.sql.SQLException;
 public class CustomerMain {
     final static Scanner scanner = new Scanner(System.in);
     protected static Customer customer;
+    protected static Sales sale;
 
     public static void main(String[] args) throws SQLException {
 
@@ -161,7 +162,6 @@ public class CustomerMain {
             default:
                 break;
         }
-
     }
 
     public static Cakes CustomerOrdering() throws SQLException {
