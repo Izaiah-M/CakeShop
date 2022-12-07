@@ -7,7 +7,6 @@ public class CustomerMain {
     final static Scanner scanner = new Scanner(System.in);
     protected static Customer customer;
 
-
     public static void main(String[] args) throws SQLException {
 
         CustomerDashboard();
@@ -16,28 +15,11 @@ public class CustomerMain {
         // They should be instantiated with a shopping cart object DONE
         // The shopping cart object should take in a cake object DONE
         // Cakes are our items and are added into the cart DONE
-        // When the info of the customer is passed in they see the cake data base items, DONE
+        // When the info of the customer is passed in they see the cake data base items,
+        // DONE
         // they pick items they need
         // items are added or removed from the cart
         // Check out receipt is generated.
-
-        // ShoppingCart cart = new ShoppingCart();
-        // ShoppingCartItem cake1 = new ShoppingCartItem("Chocolate Cake", 80000, 1);
-        // ShoppingCartItem cake3 = new ShoppingCartItem("Sponge Cake", 100000, 1);
-        // ShoppingCartItem cake2 = new ShoppingCartItem("Fruit Cake", 100000, 1);
-
-        // // Adding Items to the newly made cart
-        // cart.addItem(cake1);
-        // cart.addItem(cake2);
-        // cart.addItem(cake3);
-        // cart.getItems();
-
-        // // Adding the cart to the customer.
-        // Customer me = new Customer("Izaiah", cart);
-
-        // System.out.println(me);
-        // System.out.println(cart);
-
     }
 
     private static boolean SignIn() throws SQLException {
@@ -54,8 +36,9 @@ public class CustomerMain {
         login.setEmail(email);
         login.setPassword(password);
 
-        //the DatabaseConnect.CustomerSignIn() method returns a customer object
-        //we will access the shopping cart of this customer object later on when the customer is ordering
+        // the DatabaseConnect.CustomerSignIn() method returns a customer object
+        // we will access the shopping cart of this customer object later on when the
+        // customer is ordering
         customer = DatabaseConnect.CustomerSignIn(login);
 
         if (customer != null) {
@@ -106,17 +89,17 @@ public class CustomerMain {
 
             case 2:
                 // this is used to check for a customers information from the database
-                //we keep on 
+                // we keep on
                 boolean signIn;
-                do{
+                do {
                     signIn = SignIn();
                     if (signIn == true) {
                         CustomerMenu();
-                    } else{
+                    } else {
                         System.out.println("Please sign in with the correct credentials or Sign up");
                     }
-                } while(signIn == false);
-                
+                } while (signIn == false);
+
                 break;
 
         }
@@ -185,15 +168,23 @@ public class CustomerMain {
         // objects of ShopppingcartItem
         // ShoppingCart cart = new ShoppingCart();
         // cart.addItem(cake);
-        //the above has been commented out since we are now using the customer's cart instance.
-        
-        //ive changed the set up of the Customer main so that we can now access the shopping cart of a given customer who
-        //is logged in at the moment, so we can just add the item to that shopping cart instead
+        // the above has been commented out since we are now using the customer's cart
+        // instance.
+
+        // ive changed the set up of the Customer main so that we can now access the
+        // shopping cart of a given customer who
+        // is logged in at the moment, so we can just add the item to that shopping cart
+        // instead
         customer.AddCart();
         customer.cart.addItem(cake);
 
-         //i think we can return the cake that the customer ordered for
+        // i think we can return the cake that the customer ordered for
         return customOrder;
     }
+
+    // Removing from cart
+    // If customer choses cake to remove
+    // we pick the cake he wants to remove by id
+    // then delete it/remove it from cart
 
 }
