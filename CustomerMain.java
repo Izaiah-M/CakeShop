@@ -157,7 +157,6 @@ public class CustomerMain {
             default:
                 break;
         }
-
     }
 
     public static Cakes CustomerOrdering() throws SQLException {
