@@ -145,6 +145,19 @@ public class Cakes {
 		return sb.toString();
 
 	}
+	
+	//this method will be the one used to return the string that gets sent to the sales table in the database
+	public String salesInfo() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("ID: " + getId() + "\n");
+		sb.append("Type: " + getCakeType() + "\n");
+		sb.append("Flavour: " + getFlavour() + "\n");
+		sb.append("Date Made: " + getDateMade() + "\n");
+		sb.append("Icing Type: " + getIcing() + "\n");
+		sb.append("Cost: " + (getCost() * getQuantity()) + "\n");
 
+		return sb.toString();
+
+	}
 
 }

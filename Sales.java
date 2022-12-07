@@ -15,7 +15,7 @@ public class Sales {
 	
 	public Sales(Cakes cake) {
 		this.setCake_Id(cake.getId());
-		this.setCakeDescription(cake.toString());
+		this.setCakeDescription(cake.salesInfo());
 		this.setDateOfPurchased(cake.getDateMade()); //this is not the correct date, find a way to get the correct current date of when the sale is made
 		this.setCost(cake.getCost());
 	}
