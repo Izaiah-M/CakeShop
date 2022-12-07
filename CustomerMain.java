@@ -16,11 +16,11 @@ public class CustomerMain {
         // They should be instantiated with a shopping cart object DONE
         // The shopping cart object should take in a cake object DONE
         // Cakes are our items and are added into the cart DONE
-        // When the info of the customer is passed in they see the cake data base items, DONE
+        // When the info of the customer is passed in they see the cake data base items,
+        // DONE
         // they pick items they need
         // items are added or removed from the cart
         // Check out receipt is generated.
-
 
     }
 
@@ -38,8 +38,9 @@ public class CustomerMain {
         login.setEmail(email);
         login.setPassword(password);
 
-        //the DatabaseConnect.CustomerSignIn() method returns a customer object
-        //we will access the shopping cart of this customer object later on when the customer is ordering
+        // the DatabaseConnect.CustomerSignIn() method returns a customer object
+        // we will access the shopping cart of this customer object later on when the
+        // customer is ordering
         customer = DatabaseConnect.CustomerSignIn(login);
 
         if (customer != null) {
@@ -90,17 +91,17 @@ public class CustomerMain {
 
             case 2:
                 // this is used to check for a customers information from the database
-                //we keep on 
+                // we keep on
                 boolean signIn;
-                do{
+                do {
                     signIn = SignIn();
                     if (signIn == true) {
                         CustomerMenu();
-                    } else{
+                    } else {
                         System.out.println("Please sign in with the correct credentials or Sign up");
                     }
-                } while(signIn == false);
-                
+                } while (signIn == false);
+
                 break;
 
         }
@@ -123,21 +124,25 @@ public class CustomerMain {
                 CatalogInfo catalog = DatabaseConnect.GenerateCatalog();
                 System.out.println("-----------------------Catalog-----------------------");
                 System.out.println(catalog.getCakeList());
-                // TODO implementing a function where customers can see the catalog and choose an item from it and on choosing to buy that item, the item is removed from the database
-                //when a customer enters the id of the cake, we run the getCake method of the catalog class and return that cake from the list
-                //we then add that item to the shopping cart.
+                // TODO implementing a function where customers can see the catalog and choose
+                // an item from it and on choosing to buy that item, the item is removed from
+                // the database
+                // when a customer enters the id of the cake, we run the getCake method of the
+                // catalog class and return that cake from the list
+                // we then add that item to the shopping cart.
                 System.out.println("Which Cake would you like to purchase from the catalog?(Enter the cake's Id)");
                 int CakeChoice = scanner.nextInt();
                 scanner.nextLine();
                 Cakes answer = catalog.getCake(CakeChoice);
-                if(answer == null) {
+                if (answer == null) {
                     System.out.println("Cake not found");
                 } else {
                     ShoppingCartItem cake = new ShoppingCartItem(answer);
                     customer.cart.addItem(cake);
                     System.out.println(customer.getCart());
-                    //make a new sales object and then pass it to the database
-                    //this is just a test to see if the cakes go to the sales database when the sale is made
+                    // make a new sales object and then pass it to the database
+                    // this is just a test to see if the cakes go to the sales database when the
+                    // sale is made
                     sale = new Sales(answer);
                     DatabaseConnect.AddNewSale(sale);
                 }
@@ -193,8 +198,13 @@ public class CustomerMain {
 
         customer.cart.addItem(cake);
 
-         //i think we can return the cake that the customer ordered for
+        // i think we can return the cake that the customer ordered for
         return customOrder;
     }
+
+    // Removing from cart
+    // If customer choses cake to remove
+    // we pick the cake he wants to remove by id
+    // then delete it/remove it from cart
 
 }
