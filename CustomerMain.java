@@ -20,6 +20,7 @@ public class CustomerMain {
         // they pick items they need
         // items are added or removed from the cart
         // Check out receipt is generated.
+
     }
 
     private static boolean SignIn() throws SQLException {
@@ -110,7 +111,8 @@ public class CustomerMain {
         System.out.println("Catalog and Custom Order");
         System.out.println("Do you want to See the catalog or make a custom order");
         System.out.println("1. See Catalog");
-        System.out.println("2. Make a custom Order\n");
+        System.out.println("2. Make a custom Order");
+        System.out.println("3. Check Your Cart\n");
 
         int choice = scanner.nextInt();
         scanner.nextLine();
@@ -118,16 +120,42 @@ public class CustomerMain {
         switch (choice) {
             case 1:
                 // TODO work on adding items to cart from the catalog
-                DatabaseConnect.GenerateCatalog();
+                CatalogInfo catalog = DatabaseConnect.GenerateCatalog();
+                System.out.println("-----------------------Catalog-----------------------");
+                System.out.println(catalog.getCakeList());
+                // TODO implementing a function where customers can see the catalog and choose
+                // an item from it and on choosing to buy that item, the item is removed from
+                // the database
+                // when a customer enters the id of the cake, we run the getCake method of the
+                // catalog class and return that cake from the list
+                // we then add that item to the shopping cart.
+                System.out.println("Which Cake would you like to purchase from the catalog?(Enter the cake's Id)");
+                int CakeChoice = scanner.nextInt();
+                scanner.nextLine();
+                Cakes answer = catalog.getCake(CakeChoice);
+                if (answer == null) {
+                    System.out.println("Cake not found");
+                } else {
+                    ShoppingCartItem cake = new ShoppingCartItem(answer);
+                    customer.cart.addItem(cake);
+                    System.out.println(customer.getCart());
+                    // make a new sales object and then pass it to the database
+                    // this is just a test to see if the cakes go to the sales database when the
+                    // sale is made
+                    sale = new Sales(answer);
+                    DatabaseConnect.AddNewSale(sale);
+                }
                 break;
 
             case 2:
-                // here the customer creates their own cake object and it is then returned form
-                // the CustomerOrdering
-                // method, so the only issue remaining is how to add that custom order to the
-                // customers' cart
+                // here the customer creates their own cake object and it is then returned from
+                // the CustomerOrdering method
                 Cakes CustomerOrder = CustomerOrdering();
                 System.out.println(CustomerOrder);
+                break;
+
+            case 3:
+                System.out.println(customer.getCart());
                 break;
 
             default:
@@ -153,6 +181,7 @@ public class CustomerMain {
 
         System.out.println("Enter the price of the cake ");
         Cprice = scanner.nextInt();
+        scanner.nextLine();
 
         System.out.println("Enter the date when you want the cake.");
         Cdate = scanner.nextLine();
@@ -164,18 +193,9 @@ public class CustomerMain {
         // our shopping Cart Item can also take in a Cake Object
         ShoppingCartItem cake = new ShoppingCartItem(customOrder);
 
-        // Then here, that item, is passed into the cart, our SoppingCart takes in
+        // Then here, that item, is passed into the cart, our ShoppingCart takes in
         // objects of ShopppingcartItem
-        // ShoppingCart cart = new ShoppingCart();
-        // cart.addItem(cake);
-        // the above has been commented out since we are now using the customer's cart
-        // instance.
 
-        // ive changed the set up of the Customer main so that we can now access the
-        // shopping cart of a given customer who
-        // is logged in at the moment, so we can just add the item to that shopping cart
-        // instead
-        customer.AddCart();
         customer.cart.addItem(cake);
 
         // i think we can return the cake that the customer ordered for

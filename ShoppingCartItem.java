@@ -18,6 +18,7 @@ public class ShoppingCartItem extends Cakes implements Cloneable {
 	//i meant somehting like this
 	public ShoppingCartItem(Cakes cake) {
 		this.cakeType = cake.getCakeType();
+		this.id = cake.getId();
 		this.flavour = cake.getFlavour();
 		this.message = cake.getMessage();
 		this.dateMade = cake.getDateMade();

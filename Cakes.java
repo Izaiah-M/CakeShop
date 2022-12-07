@@ -1,5 +1,6 @@
 package CakeShop;
 
+//this class contains all the information and methods that are concerned with the cakes in the cake shop
 public class Cakes {
 	protected String cakeType;
 	protected String flavour;
@@ -9,11 +10,14 @@ public class Cakes {
 	protected int quantity = 1;
 	protected int cost;
 	protected int id;
-
+	
+	//an empty constructor to let the attributes be set individually
 	public Cakes() {
 
 	}
 
+	//an overloaded constructor that is used to create a cake object with a type, flavour, message, datemade and cost
+	//this constructor is used
 	public Cakes(String cakeType, String flavour, String message, String dateMade, String icing, int cost) {
 		this.cakeType = cakeType;
 		this.flavour = flavour;
@@ -24,13 +28,6 @@ public class Cakes {
 
 	}
 
-	// This constructor has the field quantity
-	// If we are to take this on
-	// Then we can remove the fields quantity from shopping cake Item...so that it
-	// just pulls from here straight
-	// Then, that would mean, in the custom order thing we would have to add a thing
-	// for quantity
-	// But this is in the event we chose to add the quamtity thing here.
 	public Cakes(String cakeType, String flavour, String message, String dateMade, String icing, int cost,
 			int quantity) {
 		this.cakeType = cakeType;
@@ -42,8 +39,7 @@ public class Cakes {
 		this.quantity = quantity;
 	}
 
-	// overridden constructor to take in a cake object without a message written on
-	// it
+	// overridden constructor to take in a cake object without a message written on it
 	public Cakes(String cakeType, String flavour, String dateMade, String icing, int cost) {
 		this.cakeType = cakeType;
 		this.flavour = flavour;
@@ -53,6 +49,7 @@ public class Cakes {
 	}
 
 	// Added an Id to the cake for Identification
+	//this constructor is used when reading cakes from the database
 	public Cakes(int id, String cakeType, String flavour, String message, String dateMade, String icing, int cost) {
 		this.cakeType = cakeType;
 		this.flavour = flavour;
@@ -130,7 +127,7 @@ public class Cakes {
 	//ive added the quantity to the string builder and now it can return the total cost of the 
 	//cakes if the quantity is greater than 1
 	//I also set the quantity as one when the object is instantiated so that it doesnt bring a zero at the
-	//point of printing
+	//point of printing the price
 	public String toString() {
 		StringBuilder sb = new StringBuilder();
 		sb.append("***********************************\n");
@@ -148,6 +145,19 @@ public class Cakes {
 		return sb.toString();
 
 	}
+	
+	//this method will be the one used to return the string that gets sent to the sales table in the database
+	public String salesInfo() {
+		StringBuilder sb = new StringBuilder();
+		sb.append("ID: " + getId() + "\n");
+		sb.append("Type: " + getCakeType() + "\n");
+		sb.append("Flavour: " + getFlavour() + "\n");
+		sb.append("Date Made: " + getDateMade() + "\n");
+		sb.append("Icing Type: " + getIcing() + "\n");
+		sb.append("Cost: " + (getCost() * getQuantity()) + "\n");
 
+		return sb.toString();
+
+	}
 
 }

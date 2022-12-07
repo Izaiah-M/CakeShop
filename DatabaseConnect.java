@@ -161,7 +161,7 @@ public class DatabaseConnect {
 
 		while (rs.next()) {
 			// recreate cake objects with ids to be displayed to the admin
-			sales.setSalesId(rs.getInt("ID"));
+			sales.setSales_database_Id(rs.getInt("ID"));
 			sales.setCakeDescription(rs.getString("Cake Description"));
 			sales.setDateOfPurchased(rs.getString("Date"));
 			sales.setCost(rs.getInt("Price"));
@@ -175,9 +175,14 @@ public class DatabaseConnect {
 
 	}
 
-	public static void GenerateCatalog() throws SQLException {
-
+	public static CatalogInfo GenerateCatalog() throws SQLException {
+		// a vector to store the cake objects returned from the database
 		Vector<Cakes> catalog = new Vector<Cakes>();
+
+		//a Vector to store the ids ofthe cake objects returned from the database
+		Vector<Integer> ids = new Vector<>();
+
+		//a vector to store both the catalog and the ids so that we can return both of them at a go
 
 		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
 		Statement stmt = conn.createStatement();
@@ -198,16 +203,18 @@ public class DatabaseConnect {
 			cake.setIcing(rs.getString("Icing"));
 			cake.setCost(rs.getInt("Cost"));
 			// System.out.println(cake);
+			ids.add(cake.getId());
 			catalog.add(cake);
 
 		}
 
-		System.out.println(catalog);
-
+		CatalogInfo CatalogInfo = new CatalogInfo();
+		CatalogInfo.setCakeList(catalog);
+		CatalogInfo.setCakeIds(ids);
 		// TODO implement a vector or any suitable data structure to store all the cake
-		// objects returned from the database
-		// that data structure will then be returned from this function call and it will
-		// act as our catalog
+		// objects returned from the database. im using the catalog info class that i created
+
+		return CatalogInfo;
 
 	}
 
@@ -236,4 +243,17 @@ public class DatabaseConnect {
 			return null;
 		}
 	}
+
+	public static void AddNewSale(Sales sales) throws SQLException{
+		Connection conn = DriverManager.getConnection("jdbc:sqlite:./CakeShop.db");
+		PreparedStatement stmt = conn.prepareStatement(
+				"INSERT INTO Sales('Cake Description',Date,Price) VALUES(?,?,?)",
+				Statement.RETURN_GENERATED_KEYS);
+		stmt.setString(1, sales.getCakeDescription());
+		stmt.setString(2, sales.getDateOfPurchased());
+		stmt.setLong(3, sales.getCost());
+
+		stmt.executeUpdate();
+	}
 }
+
