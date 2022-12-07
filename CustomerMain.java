@@ -139,7 +139,7 @@ public class CustomerMain {
                     System.out.println(customer.getCart());
                     //make a new sales object and then pass it to the database
                     //this is just a test to see if the cakes go to the sales database when the sale is made
-                    sale = new Sales(cake);
+                    sale = new Sales(answer);
                     DatabaseConnect.AddNewSale(sale);
                 }
                 break;
